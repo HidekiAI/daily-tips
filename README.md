@@ -7,13 +7,13 @@ One non-obvious tip each for Rust, C++, and TypeScript. Every entry names the
 minimum language or compiler version, cites a primary source, and closes with a
 question it deliberately leaves unanswered.
 
-**21 tips across 7 days** (2026-08-28 to 2026-09-16).
+**24 tips across 8 days** (2026-08-28 to 2026-09-17).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 7 | 2 | 1 | 1 | 2 | 1 |
-| C++ | 7 | 1 | 1 | 2 | 1 | 2 |
-| TypeScript | 7 | 2 | 1 | 1 | 1 | 2 |
+| Rust | 8 | 2 | 1 | 1 | 2 | 2 |
+| C++ | 8 | 1 | 1 | 2 | 2 | 2 |
+| TypeScript | 8 | 2 | 1 | 2 | 1 | 2 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -22,6 +22,9 @@ question it deliberately leaves unanswered.
 
 | Date | Language | Category | Tip |
 |---|---|---|---|
+| 2026-09-17 | Rust | `frontier` | [Nightly's borrow checker went flow-sensitive, and NLL's most-hit false positive is gone](entries/2026-09-17.md) |
+| 2026-09-17 | C++ | `perf-memory` | [std::deque gives you one heap block per element once sizeof(T) reaches 512](entries/2026-09-17.md) |
+| 2026-09-17 | TypeScript | `stdlib-ecosystem` | [Channel's type parameters do not type publish, and subscribers get your object by reference](entries/2026-09-17.md) |
 | 2026-09-16 | Rust | `perf-memory` | [A for loop cannot reach Chain's fold specialization, and pays 3x for it](entries/2026-09-16.md) |
 | 2026-09-16 | C++ | `stdlib-ecosystem` | [std::flat_map is two vectors, so auto& on its elements will not compile](entries/2026-09-16.md) |
 | 2026-09-16 | TypeScript | `type-system` | [TS4104 is keyed on array types, so a readonly array launders through an index signature](entries/2026-09-16.md) |
