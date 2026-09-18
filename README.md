@@ -28,4 +28,6 @@ what a given shape costs in a language built for it.
 - **C++** `type-system` [A deducing-this member function's address is a plain function pointer, not a pointer-to-member](entries/2026-09-18.md)
 - **TypeScript** `perf-memory` [A gap of 1024 turns your array into a hash table, and the type still says number[]](entries/2026-09-18.md)
 
+The entry also carries a functional angle and a security angle, comparing Rust, C++, TypeScript and F#.
+
 Every earlier entry is in `entries/`, one file per day.
