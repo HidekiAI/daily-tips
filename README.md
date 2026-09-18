@@ -7,13 +7,13 @@ One non-obvious tip each for Rust, C++, and TypeScript. Every entry names the
 minimum language or compiler version, cites a primary source, and closes with a
 question it deliberately leaves unanswered.
 
-**24 tips across 8 days** (2026-08-28 to 2026-09-17).
+**27 tips across 9 days** (2026-08-28 to 2026-09-18).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 8 | 2 | 1 | 1 | 2 | 2 |
-| C++ | 8 | 1 | 1 | 2 | 2 | 2 |
-| TypeScript | 8 | 2 | 1 | 2 | 1 | 2 |
+| Rust | 9 | 2 | 2 | 1 | 2 | 2 |
+| C++ | 9 | 2 | 1 | 2 | 2 | 2 |
+| TypeScript | 9 | 2 | 1 | 2 | 2 | 2 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -22,6 +22,9 @@ question it deliberately leaves unanswered.
 
 | Date | Language | Category | Tip |
 |---|---|---|---|
+| 2026-09-18 | Rust | `idiom` | [sort_by_key calls the key function once per comparison, not once per element](entries/2026-09-18.md) |
+| 2026-09-18 | C++ | `type-system` | [A deducing-this member function's address is a plain function pointer, not a pointer-to-member](entries/2026-09-18.md) |
+| 2026-09-18 | TypeScript | `perf-memory` | [A gap of 1024 turns your array into a hash table, and the type still says number[]](entries/2026-09-18.md) |
 | 2026-09-17 | Rust | `frontier` | [Nightly's borrow checker went flow-sensitive, and NLL's most-hit false positive is gone](entries/2026-09-17.md) |
 | 2026-09-17 | C++ | `perf-memory` | [std::deque gives you one heap block per element once sizeof(T) reaches 512](entries/2026-09-17.md) |
 | 2026-09-17 | TypeScript | `stdlib-ecosystem` | [Channel's type parameters do not type publish, and subscribers get your object by reference](entries/2026-09-17.md) |
