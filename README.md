@@ -7,29 +7,30 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**27 tips across 9 days** (2026-08-28 to 2026-09-18).
+**31 tips across 10 days** (2026-08-28 to 2026-09-21).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 9 | 2 | 2 | 1 | 2 | 2 |
-| C++ | 9 | 2 | 1 | 2 | 2 | 2 |
-| F# | 0 | 0 | 0 | 0 | 0 | 0 |
-| TypeScript | 9 | 2 | 1 | 2 | 2 | 2 |
+| Rust | 10 | 2 | 2 | 2 | 2 | 2 |
+| C++ | 10 | 2 | 2 | 2 | 2 | 2 |
+| F# | 1 | 0 | 0 | 0 | 1 | 0 |
+| TypeScript | 10 | 2 | 1 | 2 | 2 | 3 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-18)
+## Today's highlights (2026-09-21)
 
-- **Rust** `idiom` [sort_by_key calls the key function once per comparison, not once per element](entries/2026-09-18.md)
-- **C++** `type-system` [A deducing-this member function's address is a plain function pointer, not a pointer-to-member](entries/2026-09-18.md)
-- **TypeScript** `perf-memory` [A gap of 1024 turns your array into a hash table, and the type still says number[]](entries/2026-09-18.md)
+- **Rust** `stdlib-ecosystem` [HashMap::capacity() is a computed number, and it moves without any allocator call](entries/2026-09-21.md)
+- **C++** `idiom` [One defaulted move constructor decides whether your type works with map::operator[]](entries/2026-09-21.md)
+- **F#** `perf-memory` [Structural hashing reads the first 19 elements of an array, and equality reads all of them](entries/2026-09-21.md)
+- **TypeScript** `frontier` [The 10x is the Go rewrite, not the parallelism, and --checkers bought 13%](entries/2026-09-21.md)
 
 Also in this entry:
 
-- **The functional angle** - all four can sort by a derived key, and exactly one decided that means caching it
-- **The security angle** - an attacker who picks your keys picks your data structure
-- **FAQ** - 6 follow-up questions
-- **Appendix A** - does Rust have an equivalent to deducing `this`?
+- **Same project, same tsconfig, 120 files of mapped/conditional types.**
+- **Now hold the compiler fixed at 7.0.2 and vary only the parallelism:**
+- **The security angle** - a bounded hash is an unbounded comparison
+- **FAQ** - 5 follow-up questions
 
 Every earlier entry is in `entries/`, one file per day.
