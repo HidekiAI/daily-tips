@@ -7,30 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**31 tips across 10 days** (2026-08-28 to 2026-09-21).
+**35 tips across 11 days** (2026-08-28 to 2026-09-22).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 10 | 2 | 2 | 2 | 2 | 2 |
-| C++ | 10 | 2 | 2 | 2 | 2 | 2 |
-| F# | 1 | 0 | 0 | 0 | 1 | 0 |
-| TypeScript | 10 | 2 | 1 | 2 | 2 | 3 |
+| Rust | 11 | 3 | 2 | 2 | 2 | 2 |
+| C++ | 11 | 2 | 2 | 2 | 2 | 3 |
+| F# | 2 | 0 | 0 | 1 | 1 | 0 |
+| TypeScript | 11 | 2 | 2 | 2 | 2 | 3 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-21)
+## Today's highlights (2026-09-22)
 
-- **Rust** `stdlib-ecosystem` [HashMap::capacity() is a computed number, and it moves without any allocator call](entries/2026-09-21.md)
-- **C++** `idiom` [One defaulted move constructor decides whether your type works with map::operator[]](entries/2026-09-21.md)
-- **F#** `perf-memory` [Structural hashing reads the first 19 elements of an array, and equality reads all of them](entries/2026-09-21.md)
-- **TypeScript** `frontier` [The 10x is the Go rewrite, not the parallelism, and --checkers bought 13%](entries/2026-09-21.md)
+- **Rust** `type-system` [Box<LocalType> is local for coherence and Rc<LocalType> is not](entries/2026-09-22.md)
+- **C++** `frontier` [GCC 16 made C++20 the default, so [=] capturing this now warns in code you never touched](entries/2026-09-22.md)
+- **F#** `stdlib-ecosystem` [ValueOption has been in FSharp.Core since 4.5, and Some on an int costs 24 bytes without it](entries/2026-09-22.md)
+- **TypeScript** `idiom` [Node blanks your types out with spaces rather than deleting them, and Node 26 removed the escape hatch for everything else](entries/2026-09-22.md)
 
 Also in this entry:
 
-- **Same project, same tsconfig, 120 files of mapped/conditional types.**
-- **Now hold the compiler fixed at 7.0.2 and vary only the parallelism:**
-- **The security angle** - a bounded hash is an unbounded comparison
-- **FAQ** - 5 follow-up questions
+- **The functional angle** - all four languages let a closure outlive what it captured, and only one of them lets it dangle
+- **The security angle** - every guard in today's four tips is a compile-time guard, and three of the four have an off switch
+- **FAQ** - 4 follow-up questions
 
 Every earlier entry is in `entries/`, one file per day.
