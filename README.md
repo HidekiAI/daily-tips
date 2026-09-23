@@ -7,29 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**35 tips across 11 days** (2026-08-28 to 2026-09-22).
+**39 tips across 12 days** (2026-08-28 to 2026-09-23).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 11 | 3 | 2 | 2 | 2 | 2 |
-| C++ | 11 | 2 | 2 | 2 | 2 | 3 |
-| F# | 2 | 0 | 0 | 1 | 1 | 0 |
-| TypeScript | 11 | 2 | 2 | 2 | 2 | 3 |
+| Rust | 12 | 3 | 2 | 2 | 3 | 2 |
+| C++ | 12 | 2 | 2 | 3 | 2 | 3 |
+| F# | 3 | 0 | 1 | 1 | 1 | 0 |
+| TypeScript | 12 | 3 | 2 | 2 | 2 | 3 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-22)
+## Today's highlights (2026-09-23)
 
-- **Rust** `type-system` [Box<LocalType> is local for coherence and Rc<LocalType> is not](entries/2026-09-22.md)
-- **C++** `frontier` [GCC 16 made C++20 the default, so [=] capturing this now warns in code you never touched](entries/2026-09-22.md)
-- **F#** `stdlib-ecosystem` [ValueOption has been in FSharp.Core since 4.5, and Some on an int costs 24 bytes without it](entries/2026-09-22.md)
-- **TypeScript** `idiom` [Node blanks your types out with spaces rather than deleting them, and Node 26 removed the escape hatch for everything else](entries/2026-09-22.md)
+- **Rust** `perf-memory` [Backtrace::capture() is free when disabled, and the real cost of a captured one lands at Display, not at capture](entries/2026-09-23.md)
+- **C++** `stdlib-ecosystem` [libc++ ships ranges::fold_left but withholds __cpp_lib_ranges_fold, so a feature-test guard hides the fix for accumulate's init trap](entries/2026-09-23.md)
+- **F#** `idiom` [use outside a seq expression disposes before the first element is read](entries/2026-09-23.md)
+- **TypeScript** `type-system` [A never-returning arrow function narrows nothing, and the error lands on the line after it](entries/2026-09-23.md)
 
 Also in this entry:
 
-- **The functional angle** - all four languages let a closure outlive what it captured, and only one of them lets it dangle
-- **The security angle** - every guard in today's four tips is a compile-time guard, and three of the four have an off switch
-- **FAQ** - 4 follow-up questions
+- **The functional angle** - three of these four languages decide a fold's accumulator type from the fold, and only C++ lets the seed decide it
+- **The security angle** - the seed you typed is the integer width your quota check runs in
+- **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
