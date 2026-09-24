@@ -7,29 +7,27 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**39 tips across 12 days** (2026-08-28 to 2026-09-23).
+**43 tips across 13 days** (2026-08-28 to 2026-09-24).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 12 | 3 | 2 | 2 | 3 | 2 |
-| C++ | 12 | 2 | 2 | 3 | 2 | 3 |
-| F# | 3 | 0 | 1 | 1 | 1 | 0 |
-| TypeScript | 12 | 3 | 2 | 2 | 2 | 3 |
+| Rust | 13 | 3 | 2 | 2 | 3 | 3 |
+| C++ | 13 | 2 | 2 | 3 | 3 | 3 |
+| F# | 4 | 1 | 1 | 1 | 1 | 0 |
+| TypeScript | 13 | 3 | 2 | 3 | 2 | 3 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-23)
+## Today's highlights (2026-09-24)
 
-- **Rust** `perf-memory` [Backtrace::capture() is free when disabled, and the real cost of a captured one lands at Display, not at capture](entries/2026-09-23.md)
-- **C++** `stdlib-ecosystem` [libc++ ships ranges::fold_left but withholds __cpp_lib_ranges_fold, so a feature-test guard hides the fix for accumulate's init trap](entries/2026-09-23.md)
-- **F#** `idiom` [use outside a seq expression disposes before the first element is read](entries/2026-09-23.md)
-- **TypeScript** `type-system` [A never-returning arrow function narrows nothing, and the error lands on the line after it](entries/2026-09-23.md)
+- **Rust** `frontier` [Rust 1.97 made v0 symbol mangling the default, and your binaries were already mostly v0 before it](entries/2026-09-24.md)
+- **C++** `perf-memory` [libc++'s std::function keeps a capture inline only if it is 16 bytes and nothrow-copyable, so a missing noexcept costs a heap allocation](entries/2026-09-24.md)
+- **F#** `type-system` [A record expression takes the most recently declared type with those labels, so adding a record changes what existing code builds](entries/2026-09-24.md)
+- **TypeScript** `stdlib-ecosystem` [Effect.all is sequential unless you say otherwise, and by default it stops starting effects at the first failure](entries/2026-09-24.md)
 
 Also in this entry:
 
-- **The functional angle** - three of these four languages decide a fold's accumulator type from the fold, and only C++ lets the seed decide it
-- **The security angle** - the seed you typed is the integer width your quota check runs in
 - **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
