@@ -28,6 +28,8 @@ with a question it deliberately leaves unanswered.
 
 Also in this entry:
 
+- **The functional angle** - every language here type-erases a closure, and only C++ lets a copy constructor's noexcept decide whether that allocates
+- **The security angle** - adding concurrency to Effect.all turns an authorization check into a race with the action it guards
 - **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
