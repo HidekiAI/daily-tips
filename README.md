@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**43 tips across 13 days** (2026-08-28 to 2026-09-24).
+**47 tips across 14 days** (2026-08-28 to 2026-09-25).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 13 | 3 | 2 | 2 | 3 | 3 |
-| C++ | 13 | 2 | 2 | 3 | 3 | 3 |
-| F# | 4 | 1 | 1 | 1 | 1 | 0 |
-| TypeScript | 13 | 3 | 2 | 3 | 2 | 3 |
+| Rust | 14 | 3 | 3 | 2 | 3 | 3 |
+| C++ | 14 | 3 | 2 | 3 | 3 | 3 |
+| F# | 5 | 1 | 1 | 1 | 1 | 1 |
+| TypeScript | 14 | 3 | 2 | 3 | 3 | 3 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-24)
+## Today's highlights (2026-09-25)
 
-- **Rust** `frontier` [Rust 1.97 made v0 symbol mangling the default, and your binaries were already mostly v0 before it](entries/2026-09-24.md)
-- **C++** `perf-memory` [libc++'s std::function keeps a capture inline only if it is 16 bytes and nothrow-copyable, so a missing noexcept costs a heap allocation](entries/2026-09-24.md)
-- **F#** `type-system` [A record expression takes the most recently declared type with those labels, so adding a record changes what existing code builds](entries/2026-09-24.md)
-- **TypeScript** `stdlib-ecosystem` [Effect.all is sequential unless you say otherwise, and by default it stops starting effects at the first failure](entries/2026-09-24.md)
+- **Rust** `idiom` [map(f).last() calls f on every element even when the iterator can run backwards](entries/2026-09-25.md)
+- **C++** `type-system` [CTAD through an alias template rewrites the class's guides and bolts on a hidden is_deducible constraint](entries/2026-09-25.md)
+- **F#** `frontier` [F# 11 record spreads are last-writer-wins, and a spread after an explicit field overwrites it with only a warning](entries/2026-09-25.md)
+- **TypeScript** `perf-memory` [A 16-character slice of a 1 MiB string keeps the whole 1 MiB alive, and a 12-character one does not](entries/2026-09-25.md)
 
 Also in this entry:
 
-- **The functional angle** - every language here type-erases a closure, and only C++ lets a copy constructor's noexcept decide whether that allocates
-- **The security angle** - adding concurrency to Effect.all turns an authorization check into a race with the action it guards
-- **FAQ**
+- **The functional angle** - "give me the last one" is O(1) only where the language never promised to run the skipped elements
+- **The security angle** - in both F# 11 and TypeScript, putting the spread last can quietly undo a revocation
 
 Every earlier entry is in `entries/`, one file per day.
