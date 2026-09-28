@@ -7,28 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**47 tips across 14 days** (2026-08-28 to 2026-09-25).
+**51 tips across 15 days** (2026-08-28 to 2026-09-28).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 14 | 3 | 3 | 2 | 3 | 3 |
-| C++ | 14 | 3 | 2 | 3 | 3 | 3 |
-| F# | 5 | 1 | 1 | 1 | 1 | 1 |
-| TypeScript | 14 | 3 | 2 | 3 | 3 | 3 |
+| Rust | 15 | 3 | 3 | 3 | 3 | 3 |
+| C++ | 15 | 3 | 3 | 3 | 3 | 3 |
+| F# | 6 | 1 | 1 | 1 | 2 | 1 |
+| TypeScript | 15 | 3 | 2 | 3 | 3 | 4 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-25)
+## Today's highlights (2026-09-28)
 
-- **Rust** `idiom` [map(f).last() calls f on every element even when the iterator can run backwards](entries/2026-09-25.md)
-- **C++** `type-system` [CTAD through an alias template rewrites the class's guides and bolts on a hidden is_deducible constraint](entries/2026-09-25.md)
-- **F#** `frontier` [F# 11 record spreads are last-writer-wins, and a spread after an explicit field overwrites it with only a warning](entries/2026-09-25.md)
-- **TypeScript** `perf-memory` [A 16-character slice of a 1 MiB string keeps the whole 1 MiB alive, and a 12-character one does not](entries/2026-09-25.md)
+- **Rust** `stdlib-ecosystem` [extract_if keeps every element it never reached, so .take(n) removes n and leaves the rest](entries/2026-09-28.md)
+- **C++** `idiom` [optional::value_or builds its fallback every call and copies the value it already has](entries/2026-09-28.md)
+- **F#** `perf-memory` [A function returning int * int costs 24 bytes a call, and the tuple from TryParse is free only at the call site](entries/2026-09-28.md)
+- **TypeScript** `frontier` [Math.sumPrecise is ES2026 and in Chrome 147, but TypeScript 7.0.2 has no declaration and Node 26 hides it behind a V8 flag](entries/2026-09-28.md)
 
 Also in this entry:
 
-- **The functional angle** - "give me the last one" is O(1) only where the language never promised to run the skipped elements
-- **The security angle** - in both F# 11 and TypeScript, putting the spread last can quietly undo a revocation
+- **The functional angle** - the additive identity of floating point is -0, and only two of the folds you write know it
+- **The security angle** - a discarded filter is a revocation that never ran
+- **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
