@@ -7,29 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**51 tips across 15 days** (2026-08-28 to 2026-09-28).
+**55 tips across 16 days** (2026-08-28 to 2026-09-29).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 15 | 3 | 3 | 3 | 3 | 3 |
-| C++ | 15 | 3 | 3 | 3 | 3 | 3 |
-| F# | 6 | 1 | 1 | 1 | 2 | 1 |
-| TypeScript | 15 | 3 | 2 | 3 | 3 | 4 |
+| Rust | 16 | 4 | 3 | 3 | 3 | 3 |
+| C++ | 16 | 3 | 3 | 3 | 3 | 4 |
+| F# | 7 | 1 | 1 | 2 | 2 | 1 |
+| TypeScript | 16 | 3 | 3 | 3 | 3 | 4 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-28)
+## Today's highlights (2026-09-29)
 
-- **Rust** `stdlib-ecosystem` [extract_if keeps every element it never reached, so .take(n) removes n and leaves the rest](entries/2026-09-28.md)
-- **C++** `idiom` [optional::value_or builds its fallback every call and copies the value it already has](entries/2026-09-28.md)
-- **F#** `perf-memory` [A function returning int * int costs 24 bytes a call, and the tuple from TryParse is free only at the call site](entries/2026-09-28.md)
-- **TypeScript** `frontier` [Math.sumPrecise is ES2026 and in Chrome 147, but TypeScript 7.0.2 has no declaration and Node 26 hides it behind a V8 flag](entries/2026-09-28.md)
+- **Rust** `type-system` [Two captureless closures unify to a fn pointer, and capturing one () breaks the whole array](entries/2026-09-29.md)
+- **C++** `frontier` [libc++ 22 made multimap::find return any equal element, and for four months extract(k) followed it off the standard](entries/2026-09-29.md)
+- **F#** `stdlib-ecosystem` [A MailboxProcessor whose body throws keeps accepting mail, and nothing hears it die](entries/2026-09-29.md)
+- **TypeScript** `idiom` [Effect.cached memoizes the Exit, so a failed first call is the answer forever](entries/2026-09-29.md)
 
 Also in this entry:
 
-- **The functional angle** - the additive identity of floating point is -0, and only two of the folds you write know it
-- **The security angle** - a discarded filter is a revocation that never ran
+- **The functional angle** - every run-once cell has to decide whether a failure is remembered, and the standard libraries split three ways
+- **The security angle** - a dead consumer with an unbounded queue is an allocator anyone can feed
 - **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
