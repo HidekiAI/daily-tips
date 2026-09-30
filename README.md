@@ -7,29 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**55 tips across 16 days** (2026-08-28 to 2026-09-29).
+**59 tips across 17 days** (2026-08-28 to 2026-09-30).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 16 | 4 | 3 | 3 | 3 | 3 |
-| C++ | 16 | 3 | 3 | 3 | 3 | 4 |
-| F# | 7 | 1 | 1 | 2 | 2 | 1 |
-| TypeScript | 16 | 3 | 3 | 3 | 3 | 4 |
+| Rust | 17 | 4 | 3 | 3 | 4 | 3 |
+| C++ | 17 | 3 | 3 | 4 | 3 | 4 |
+| F# | 8 | 1 | 2 | 2 | 2 | 1 |
+| TypeScript | 17 | 4 | 3 | 3 | 3 | 4 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-29)
+## Today's highlights (2026-09-30)
 
-- **Rust** `type-system` [Two captureless closures unify to a fn pointer, and capturing one () breaks the whole array](entries/2026-09-29.md)
-- **C++** `frontier` [libc++ 22 made multimap::find return any equal element, and for four months extract(k) followed it off the standard](entries/2026-09-29.md)
-- **F#** `stdlib-ecosystem` [A MailboxProcessor whose body throws keeps accepting mail, and nothing hears it die](entries/2026-09-29.md)
-- **TypeScript** `idiom` [Effect.cached memoizes the Exit, so a failed first call is the answer forever](entries/2026-09-29.md)
+- **Rust** `perf-memory` [Arc::make_mut with only Weak refs left moves the value to a new allocation, and every Weak now reads as dead](entries/2026-09-30.md)
+- **C++** `stdlib-ecosystem` [resize_and_overwrite skips the zero-fill resize does, about 10x on a reused 1 MiB buffer, and the size you return is a promise](entries/2026-09-30.md)
+- **F#** `idiom` [dict finds an array key and Dictionary() does not, and wrapping the key in a tuple breaks it where a record does not](entries/2026-09-30.md)
+- **TypeScript** `type-system` [filter(x => x !== undefined) narrows the array and filter(x => !!x) does not, because an inferred predicate has to be an if and only if](entries/2026-09-30.md)
 
 Also in this entry:
 
-- **The functional angle** - every run-once cell has to decide whether a failure is remembered, and the standard libraries split three ways
-- **The security angle** - a dead consumer with an unbounded queue is an allocator anyone can feed
+- **The functional angle** - only TypeScript lets `filter` change the element type, so only TypeScript has to prove an "if and only if"
+- **The security angle** - a buffer you did not zero holds the previous request, and only Rust makes reading it a type error
 - **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
