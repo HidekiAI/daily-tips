@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**59 tips across 17 days** (2026-08-28 to 2026-09-30).
+**63 tips across 18 days** (2026-08-28 to 2026-10-01).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 17 | 4 | 3 | 3 | 4 | 3 |
-| C++ | 17 | 3 | 3 | 4 | 3 | 4 |
-| F# | 8 | 1 | 2 | 2 | 2 | 1 |
-| TypeScript | 17 | 4 | 3 | 3 | 3 | 4 |
+| Rust | 18 | 4 | 3 | 3 | 4 | 4 |
+| C++ | 18 | 3 | 3 | 4 | 4 | 4 |
+| F# | 9 | 2 | 2 | 2 | 2 | 1 |
+| TypeScript | 18 | 4 | 3 | 4 | 3 | 4 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-09-30)
+## Today's highlights (2026-10-01)
 
-- **Rust** `perf-memory` [Arc::make_mut with only Weak refs left moves the value to a new allocation, and every Weak now reads as dead](entries/2026-09-30.md)
-- **C++** `stdlib-ecosystem` [resize_and_overwrite skips the zero-fill resize does, about 10x on a reused 1 MiB buffer, and the size you return is a promise](entries/2026-09-30.md)
-- **F#** `idiom` [dict finds an array key and Dictionary() does not, and wrapping the key in a tuple breaks it where a record does not](entries/2026-09-30.md)
-- **TypeScript** `type-system` [filter(x => x !== undefined) narrows the array and filter(x => !!x) does not, because an inferred predicate has to be an if and only if](entries/2026-09-30.md)
+- **Rust** `frontier` [String::from_utf8_lossy_owned keeps your buffer only when nothing needed replacing, and one stray byte frees it](entries/2026-10-01.md)
+- **C++** `perf-memory` [unordered_map::reserve(n) is one allocation, and the n inserts after it are n more](entries/2026-10-01.md)
+- **F#** `type-system` [A unit of measure is gone at runtime, and FS1240 only warns when you write the unit in the type test yourself](entries/2026-10-01.md)
+- **TypeScript** `stdlib-ecosystem` [structuredClone is typed (value: T) => T, and a class instance comes back without its class](entries/2026-10-01.md)
 
 Also in this entry:
 
-- **The functional angle** - only TypeScript lets `filter` change the element type, so only TypeScript has to prove an "if and only if"
-- **The security angle** - a buffer you did not zero holds the previous request, and only Rust makes reading it a type error
-- **FAQ**
+- **The functional angle** - returning the input untouched when nothing changed is free only where identity is visible
+- **The security angle** - lossy decoding is many-to-one, so two different names can become one key
 
 Every earlier entry is in `entries/`, one file per day.
