@@ -7,28 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**63 tips across 18 days** (2026-08-28 to 2026-10-01).
+**67 tips across 19 days** (2026-08-28 to 2026-10-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 18 | 4 | 3 | 3 | 4 | 4 |
-| C++ | 18 | 3 | 3 | 4 | 4 | 4 |
-| F# | 9 | 2 | 2 | 2 | 2 | 1 |
-| TypeScript | 18 | 4 | 3 | 4 | 3 | 4 |
+| Rust | 19 | 4 | 4 | 3 | 4 | 4 |
+| C++ | 19 | 4 | 3 | 4 | 4 | 4 |
+| F# | 10 | 2 | 2 | 2 | 2 | 2 |
+| TypeScript | 19 | 4 | 3 | 4 | 4 | 4 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-01)
+## Today's highlights (2026-10-02)
 
-- **Rust** `frontier` [String::from_utf8_lossy_owned keeps your buffer only when nothing needed replacing, and one stray byte frees it](entries/2026-10-01.md)
-- **C++** `perf-memory` [unordered_map::reserve(n) is one allocation, and the n inserts after it are n more](entries/2026-10-01.md)
-- **F#** `type-system` [A unit of measure is gone at runtime, and FS1240 only warns when you write the unit in the type test yourself](entries/2026-10-01.md)
-- **TypeScript** `stdlib-ecosystem` [structuredClone is typed (value: T) => T, and a class instance comes back without its class](entries/2026-10-01.md)
+- **Rust** `idiom` [take_while eats the element that stopped it, because next() reads and advances in one call](entries/2026-10-02.md)
+- **C++** `type-system` [Port() = delete stopped Port{70000} only in C++20; in C++17 the struct was still an aggregate](entries/2026-10-02.md)
+- **F#** `frontier` [F# 11 made interpolated strings culture-invariant, so a German server's logs switch from 1.234,5 to 1,234.5 on upgrade](entries/2026-10-02.md)
+- **TypeScript** `perf-memory` [A closure that never mentions your 64 MiB buffer keeps it alive if any closure in the same scope does, even one in a branch that never ran](entries/2026-10-02.md)
 
 Also in this entry:
 
-- **The functional angle** - returning the input untouched when nothing changed is free only where identity is visible
-- **The security angle** - lossy decoding is many-to-one, so two different names can become one key
+- **The functional angle** - lookahead is free where reading and advancing are two calls, and costs a buffer where they are one
+- **The security angle** - a constructor is only a gate if the language forbids walking around it
+- **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
