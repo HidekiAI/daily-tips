@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**67 tips across 19 days** (2026-08-28 to 2026-10-02).
+**71 tips across 20 days** (2026-08-28 to 2026-10-03).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 19 | 4 | 4 | 3 | 4 | 4 |
-| C++ | 19 | 4 | 3 | 4 | 4 | 4 |
-| F# | 10 | 2 | 2 | 2 | 2 | 2 |
-| TypeScript | 19 | 4 | 3 | 4 | 4 | 4 |
+| Rust | 20 | 4 | 4 | 4 | 4 | 4 |
+| C++ | 20 | 4 | 4 | 4 | 4 | 4 |
+| F# | 11 | 2 | 2 | 2 | 3 | 2 |
+| TypeScript | 20 | 4 | 3 | 4 | 4 | 5 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-02)
+## Today's highlights (2026-10-03)
 
-- **Rust** `idiom` [take_while eats the element that stopped it, because next() reads and advances in one call](entries/2026-10-02.md)
-- **C++** `type-system` [Port() = delete stopped Port{70000} only in C++20; in C++17 the struct was still an aggregate](entries/2026-10-02.md)
-- **F#** `frontier` [F# 11 made interpolated strings culture-invariant, so a German server's logs switch from 1.234,5 to 1,234.5 on upgrade](entries/2026-10-02.md)
-- **TypeScript** `perf-memory` [A closure that never mentions your 64 MiB buffer keeps it alive if any closure in the same scope does, even one in a branch that never ran](entries/2026-10-02.md)
+- **Rust** `stdlib-ecosystem` [HashMap::get_disjoint_mut panics on a repeated key, while the slice version hands you an Err](entries/2026-10-03.md)
+- **C++** `idiom` [map.emplace(key, std::move(value)) eats your value when the key exists, but only if the key needs converting](entries/2026-10-03.md)
+- **F#** `perf-memory` [A Map keyed by a tuple allocates about 1.1 KB per lookup, and the same compare in your own code allocates nothing](entries/2026-10-03.md)
+- **TypeScript** `frontier` [Effect 4.0 swapped partition to [passes, fails], and when both halves have one type, tsc accepts the old destructuring](entries/2026-10-03.md)
 
 Also in this entry:
 
-- **The functional angle** - lookahead is free where reading and advancing are two calls, and costs a buffer where they are one
-- **The security angle** - a constructor is only a gate if the language forbids walking around it
-- **FAQ**
+- **The functional angle** - a persistent map is only as cheap as the comparator it is handed, and F# hands it the slow one for tuples
+- **The security angle** - a same-typed pair is an authorization decision that no type checks
 
 Every earlier entry is in `entries/`, one file per day.
