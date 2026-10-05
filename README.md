@@ -7,28 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**71 tips across 20 days** (2026-08-28 to 2026-10-03).
+**75 tips across 21 days** (2026-08-28 to 2026-10-05).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 20 | 4 | 4 | 4 | 4 | 4 |
-| C++ | 20 | 4 | 4 | 4 | 4 | 4 |
-| F# | 11 | 2 | 2 | 2 | 3 | 2 |
-| TypeScript | 20 | 4 | 3 | 4 | 4 | 5 |
+| Rust | 21 | 5 | 4 | 4 | 4 | 4 |
+| C++ | 21 | 4 | 4 | 4 | 4 | 5 |
+| F# | 12 | 2 | 2 | 3 | 3 | 2 |
+| TypeScript | 21 | 4 | 4 | 4 | 4 | 5 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-03)
+## Today's highlights (2026-10-05)
 
-- **Rust** `stdlib-ecosystem` [HashMap::get_disjoint_mut panics on a repeated key, while the slice version hands you an Err](entries/2026-10-03.md)
-- **C++** `idiom` [map.emplace(key, std::move(value)) eats your value when the key exists, but only if the key needs converting](entries/2026-10-03.md)
-- **F#** `perf-memory` [A Map keyed by a tuple allocates about 1.1 KB per lookup, and the same compare in your own code allocates nothing](entries/2026-10-03.md)
-- **TypeScript** `frontier` [Effect 4.0 swapped partition to [passes, fails], and when both halves have one type, tsc accepts the old destructuring](entries/2026-10-03.md)
+- **Rust** `type-system` [In edition 2024 a returned impl Trait borrows every argument, and use<> can drop a lifetime but never a type parameter](entries/2026-10-05.md)
+- **C++** `frontier` [C++26 added span's initializer_list constructor, made span{ptrs, 0}.size() equal 2, and was taken back out in April 2026](entries/2026-10-05.md)
+- **F#** `stdlib-ecosystem` [Array.sortBy is not stable and List.sortBy is, and your tests won't notice below 17 elements](entries/2026-10-05.md)
+- **TypeScript** `idiom` [try/catch gives you unknown, but .catch(err => ...) still gives you any under strict](entries/2026-10-05.md)
 
 Also in this entry:
 
-- **The functional angle** - a persistent map is only as cheap as the comparator it is handed, and F# hands it the slow one for tuples
-- **The security angle** - a same-typed pair is an authorization decision that no type checks
+- **The functional angle** - a stable sort is free in every language here, as long as you picked the right name, and F# hands it to you by module
+- **The security angle** - the C++26 `span{ptrs, 0}` is not just the wrong size, it is a dangling view, and `-Wall -Wextra` says nothing
+- **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
