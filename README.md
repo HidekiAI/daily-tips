@@ -7,29 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**75 tips across 21 days** (2026-08-28 to 2026-10-05).
+**79 tips across 22 days** (2026-08-28 to 2026-10-06).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 21 | 5 | 4 | 4 | 4 | 4 |
-| C++ | 21 | 4 | 4 | 4 | 4 | 5 |
-| F# | 12 | 2 | 2 | 3 | 3 | 2 |
-| TypeScript | 21 | 4 | 4 | 4 | 4 | 5 |
+| Rust | 22 | 5 | 4 | 4 | 5 | 4 |
+| C++ | 22 | 4 | 4 | 5 | 4 | 5 |
+| F# | 13 | 2 | 3 | 3 | 3 | 2 |
+| TypeScript | 22 | 5 | 4 | 4 | 4 | 5 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-05)
+## Today's highlights (2026-10-06)
 
-- **Rust** `type-system` [In edition 2024 a returned impl Trait borrows every argument, and use<> can drop a lifetime but never a type parameter](entries/2026-10-05.md)
-- **C++** `frontier` [C++26 added span's initializer_list constructor, made span{ptrs, 0}.size() equal 2, and was taken back out in April 2026](entries/2026-10-05.md)
-- **F#** `stdlib-ecosystem` [Array.sortBy is not stable and List.sortBy is, and your tests won't notice below 17 elements](entries/2026-10-05.md)
-- **TypeScript** `idiom` [try/catch gives you unknown, but .catch(err => ...) still gives you any under strict](entries/2026-10-05.md)
+- **Rust** `perf-memory` [Arc<str>::from(String) copies the whole string into a new block, and Arc::new(String) allocates 40 bytes](entries/2026-10-06.md)
+- **C++** `stdlib-ecosystem` [C++26 made std::to_string(0.1) return "0.1", and only libstdc++ ships it](entries/2026-10-06.md)
+- **F#** `idiom` [A task { } bound with let has already run, and an async { } runs again every time you start it](entries/2026-10-06.md)
+- **TypeScript** `type-system` [An untagged union accepts an object with both members' fields, and in picks whichever branch you test first](entries/2026-10-06.md)
 
 Also in this entry:
 
-- **The functional angle** - a stable sort is free in every language here, as long as you picked the right name, and F# hands it to you by module
-- **The security angle** - the C++26 `span{ptrs, 0}` is not just the wrong size, it is a dangling view, and `-Wall -Wextra` says nothing
+- **The functional angle** - a value that holds work is either a recipe or a receipt, and only F# lets you pick with one keyword
+- **The security angle** - a value two readers can interpret two ways is an authorization bug waiting for a second reader
 - **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
