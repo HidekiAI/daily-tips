@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**79 tips across 22 days** (2026-08-28 to 2026-10-06).
+**83 tips across 23 days** (2026-08-28 to 2026-10-07).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 22 | 5 | 4 | 4 | 5 | 4 |
-| C++ | 22 | 4 | 4 | 5 | 4 | 5 |
-| F# | 13 | 2 | 3 | 3 | 3 | 2 |
-| TypeScript | 22 | 5 | 4 | 4 | 4 | 5 |
+| Rust | 23 | 5 | 4 | 4 | 5 | 5 |
+| C++ | 23 | 4 | 4 | 5 | 5 | 5 |
+| F# | 14 | 3 | 3 | 3 | 3 | 2 |
+| TypeScript | 23 | 5 | 4 | 5 | 4 | 5 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-06)
+## Today's highlights (2026-10-07)
 
-- **Rust** `perf-memory` [Arc<str>::from(String) copies the whole string into a new block, and Arc::new(String) allocates 40 bytes](entries/2026-10-06.md)
-- **C++** `stdlib-ecosystem` [C++26 made std::to_string(0.1) return "0.1", and only libstdc++ ships it](entries/2026-10-06.md)
-- **F#** `idiom` [A task { } bound with let has already run, and an async { } runs again every time you start it](entries/2026-10-06.md)
-- **TypeScript** `type-system` [An untagged union accepts an object with both members' fields, and in picks whichever branch you test first](entries/2026-10-06.md)
+- **Rust** `frontier` [Since 1.99 an exhausted a..=b records how it was drained, and slicing with the leftover can panic](entries/2026-10-07.md)
+- **C++** `perf-memory` [make_shared puts your object inside the control block, so the last weak_ptr, not the last shared_ptr, frees its bytes](entries/2026-10-07.md)
+- **F#** `type-system` [A [<Struct>] single-case union hides its constructor, and Array.zeroCreate still makes one with null inside](entries/2026-10-07.md)
+- **TypeScript** `stdlib-ecosystem` [Array.fromAsync is typed like Promise.all, and a later promise that rejects early kills the process](entries/2026-10-07.md)
 
 Also in this entry:
 
-- **The functional angle** - a value that holds work is either a recipe or a receipt, and only F# lets you pick with one keyword
-- **The security angle** - a value two readers can interpret two ways is an authorization bug waiting for a second reader
-- **FAQ**
+- **The functional angle** - Rust's old range is its own cursor, so a drained range is a leftover value you can still read
+- **The security angle** - a private constructor guards the values you build, not the zero value the runtime fills in
 
 Every earlier entry is in `entries/`, one file per day.
