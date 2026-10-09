@@ -7,28 +7,29 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**83 tips across 23 days** (2026-08-28 to 2026-10-07).
+**87 tips across 24 days** (2026-08-28 to 2026-10-09).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 23 | 5 | 4 | 4 | 5 | 5 |
-| C++ | 23 | 4 | 4 | 5 | 5 | 5 |
-| F# | 14 | 3 | 3 | 3 | 3 | 2 |
-| TypeScript | 23 | 5 | 4 | 5 | 4 | 5 |
+| Rust | 24 | 5 | 5 | 4 | 5 | 5 |
+| C++ | 24 | 5 | 4 | 5 | 5 | 5 |
+| F# | 15 | 3 | 3 | 3 | 3 | 3 |
+| TypeScript | 24 | 5 | 4 | 5 | 5 | 5 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-07)
+## Today's highlights (2026-10-09)
 
-- **Rust** `frontier` [Since 1.99 an exhausted a..=b records how it was drained, and slicing with the leftover can panic](entries/2026-10-07.md)
-- **C++** `perf-memory` [make_shared puts your object inside the control block, so the last weak_ptr, not the last shared_ptr, frees its bytes](entries/2026-10-07.md)
-- **F#** `type-system` [A [<Struct>] single-case union hides its constructor, and Array.zeroCreate still makes one with null inside](entries/2026-10-07.md)
-- **TypeScript** `stdlib-ecosystem` [Array.fromAsync is typed like Promise.all, and a later promise that rejects early kills the process](entries/2026-10-07.md)
+- **Rust** `idiom` [let _ = owned moves nothing and let _ = lock() unlocks on the same line, and rustc only catches the std lock](entries/2026-10-09.md)
+- **C++** `type-system` [size_t and uint64_t are the same type on Linux and Windows and different on macOS, so std::max(v.size(), u64) compiles on two of three](entries/2026-10-09.md)
+- **F#** `frontier` [Set.intersect walked its first argument, so intersect huge tiny was 18,000x slower than tiny huge until FSharp.Core 10.1.300, and the fix kept the first set's elements](entries/2026-10-09.md)
+- **TypeScript** `perf-memory` [A string built with += is a 52-byte-per-piece tree until something reads one character, and that read copies all of it](entries/2026-10-09.md)
 
 Also in this entry:
 
-- **The functional angle** - Rust's old range is its own cursor, so a drained range is a leftover value you can still read
-- **The security angle** - a private constructor guards the values you build, not the zero value the runtime fills in
+- **The functional angle** - what a closure captures is decided by a different authority in each language, and only Rust's is the language spec
+- **The security angle** - `_` ends a lock's life on the line it was taken in exactly one of four languages, and that one only warns for its own std types
+- **FAQ**
 
 Every earlier entry is in `entries/`, one file per day.
