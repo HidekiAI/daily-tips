@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**87 tips across 24 days** (2026-08-28 to 2026-10-09).
+**91 tips across 25 days** (2026-08-28 to 2026-10-12).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 24 | 5 | 5 | 4 | 5 | 5 |
-| C++ | 24 | 5 | 4 | 5 | 5 | 5 |
-| F# | 15 | 3 | 3 | 3 | 3 | 3 |
-| TypeScript | 24 | 5 | 4 | 5 | 5 | 5 |
+| Rust | 25 | 5 | 5 | 5 | 5 | 5 |
+| C++ | 25 | 5 | 5 | 5 | 5 | 5 |
+| F# | 16 | 3 | 3 | 3 | 4 | 3 |
+| TypeScript | 25 | 5 | 4 | 5 | 5 | 6 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-09)
+## Today's highlights (2026-10-12)
 
-- **Rust** `idiom` [let _ = owned moves nothing and let _ = lock() unlocks on the same line, and rustc only catches the std lock](entries/2026-10-09.md)
-- **C++** `type-system` [size_t and uint64_t are the same type on Linux and Windows and different on macOS, so std::max(v.size(), u64) compiles on two of three](entries/2026-10-09.md)
-- **F#** `frontier` [Set.intersect walked its first argument, so intersect huge tiny was 18,000x slower than tiny huge until FSharp.Core 10.1.300, and the fix kept the first set's elements](entries/2026-10-09.md)
-- **TypeScript** `perf-memory` [A string built with += is a 52-byte-per-piece tree until something reads one character, and that read copies all of it](entries/2026-10-09.md)
+- **Rust** `stdlib-ecosystem` [dedup_by hands you the later element first, so a merge written left-to-right sums into the one it deletes](entries/2026-10-12.md)
+- **C++** `idiom` [std::scoped_lock(mutex_); declares a lock over nothing named mutex_, and -Wall -Wextra say nothing](entries/2026-10-12.md)
+- **F#** `perf-memory` [for i in 0L .. n was an IEnumerable loop until F# 9, and LangVersion 8.0 on today's compiler still makes it one](entries/2026-10-12.md)
+- **TypeScript** `frontier` [getOrInsertComputed searches again after your callback, so a write the callback made to that key is overwritten](entries/2026-10-12.md)
 
 Also in this entry:
 
-- **The functional angle** - what a closure captures is decided by a different authority in each language, and only Rust's is the language spec
-- **The security angle** - `_` ends a lock's life on the line it was taken in exactly one of four languages, and that one only warns for its own std types
-- **FAQ**
+- **The functional angle** - grouping adjacent runs is a view in Rust and C++23, a mutation in dedup_by, and a hand-written fold in F# and TypeScript
+- **The security angle** - a critical section that compiles is not a critical section that holds
 
 Every earlier entry is in `entries/`, one file per day.
