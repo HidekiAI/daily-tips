@@ -7,28 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**91 tips across 25 days** (2026-08-28 to 2026-10-12).
+**95 tips across 26 days** (2026-08-28 to 2026-10-13).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 25 | 5 | 5 | 5 | 5 | 5 |
-| C++ | 25 | 5 | 5 | 5 | 5 | 5 |
-| F# | 16 | 3 | 3 | 3 | 4 | 3 |
-| TypeScript | 25 | 5 | 4 | 5 | 5 | 6 |
+| Rust | 26 | 6 | 5 | 5 | 5 | 5 |
+| C++ | 26 | 5 | 5 | 5 | 5 | 6 |
+| F# | 17 | 3 | 3 | 4 | 4 | 3 |
+| TypeScript | 26 | 5 | 5 | 5 | 5 | 6 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-12)
+## Today's highlights (2026-10-13)
 
-- **Rust** `stdlib-ecosystem` [dedup_by hands you the later element first, so a merge written left-to-right sums into the one it deletes](entries/2026-10-12.md)
-- **C++** `idiom` [std::scoped_lock(mutex_); declares a lock over nothing named mutex_, and -Wall -Wextra say nothing](entries/2026-10-12.md)
-- **F#** `perf-memory` [for i in 0L .. n was an IEnumerable loop until F# 9, and LangVersion 8.0 on today's compiler still makes it one](entries/2026-10-12.md)
-- **TypeScript** `frontier` [getOrInsertComputed searches again after your callback, so a write the callback made to that key is overwritten](entries/2026-10-12.md)
+- **Rust** `type-system` [A default type parameter never helps inference, which is why HashMap::new is only defined for RandomState](entries/2026-10-13.md)
+- **C++** `frontier` [#embed hands you the file's bytes and no NUL, and suffix(, 0) is how you get one back](entries/2026-10-13.md)
+- **F#** `stdlib-ecosystem` [lazy remembers the exception, so a config load that failed once at boot fails until the process restarts](entries/2026-10-13.md)
+- **TypeScript** `idiom` [JSON.parse rounds a 64-bit id before your reviver sees it, and only the ES2025 context.source has the real digits](entries/2026-10-13.md)
 
 Also in this entry:
 
-- **The functional angle** - grouping adjacent runs is a view in Rust and C++23, a mutation in dedup_by, and a hand-written fold in F# and TypeScript
-- **The security angle** - a critical section that compiles is not a critical section that holds
+- **The functional angle** - memoizing a thunk forces you to decide whether failure is a value, and Rust is the only one that ships both answers as separate types
+- **The security angle** - an id that rounds is an authorization bug, and the type checker blesses it
 
 Every earlier entry is in `entries/`, one file per day.
