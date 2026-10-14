@@ -7,28 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**95 tips across 26 days** (2026-08-28 to 2026-10-13).
+**99 tips across 27 days** (2026-08-28 to 2026-10-14).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 26 | 6 | 5 | 5 | 5 | 5 |
-| C++ | 26 | 5 | 5 | 5 | 5 | 6 |
-| F# | 17 | 3 | 3 | 4 | 4 | 3 |
-| TypeScript | 26 | 5 | 5 | 5 | 5 | 6 |
+| Rust | 27 | 6 | 5 | 5 | 6 | 5 |
+| C++ | 27 | 5 | 5 | 6 | 5 | 6 |
+| F# | 18 | 3 | 4 | 4 | 4 | 3 |
+| TypeScript | 27 | 6 | 5 | 5 | 5 | 6 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-13)
+## Today's highlights (2026-10-14)
 
-- **Rust** `type-system` [A default type parameter never helps inference, which is why HashMap::new is only defined for RandomState](entries/2026-10-13.md)
-- **C++** `frontier` [#embed hands you the file's bytes and no NUL, and suffix(, 0) is how you get one back](entries/2026-10-13.md)
-- **F#** `stdlib-ecosystem` [lazy remembers the exception, so a config load that failed once at boot fails until the process restarts](entries/2026-10-13.md)
-- **TypeScript** `idiom` [JSON.parse rounds a 64-bit id before your reviver sees it, and only the ES2025 context.source has the real digits](entries/2026-10-13.md)
+- **Rust** `perf-memory` [thread_local!'s const { } deletes the init branch, and on macOS the call it leaves behind is most of the cost](entries/2026-10-14.md)
+- **C++** `stdlib-ecosystem` [std::midpoint rounds toward its first argument, so midpoint(high, low) is the overflow-free round-up a last-true search needs](entries/2026-10-14.md)
+- **F#** `idiom` [= says two NaN records differ and .Equals says they match, so List.distinct and HashSet dedupe the same list differently](entries/2026-10-14.md)
+- **TypeScript** `type-system` [ReturnType and Parameters read only the last overload, so a generic wrapper silently drops every other one](entries/2026-10-14.md)
 
 Also in this entry:
 
-- **The functional angle** - memoizing a thunk forces you to decide whether failure is a value, and Rust is the only one that ships both answers as separate types
-- **The security angle** - an id that rounds is an authorization bug, and the type checker blesses it
+- **The functional angle** - max is a fold only when its operator is associative, and NaN makes every language's default max depend on where the NaN sits
+- **The security angle** - the midpoint is attacker-chosen arithmetic, and the two classic failures are a wrapped index and a loop that never exits
 
 Every earlier entry is in `entries/`, one file per day.
