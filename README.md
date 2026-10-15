@@ -30,5 +30,6 @@ Also in this entry:
 
 - **The functional angle** - taking a prefix of a lazy sequence decides who owns the rest, and four languages give four answers
 - **The security angle** - C's `...` is the only calling convention here where the callee guesses how many arguments it got
+- **FAQ** - 1 follow-up questions
 
 Every earlier entry is in `entries/`, one file per day.
