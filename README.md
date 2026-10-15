@@ -7,28 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**99 tips across 27 days** (2026-08-28 to 2026-10-14).
+**103 tips across 28 days** (2026-08-28 to 2026-10-15).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 27 | 6 | 5 | 5 | 6 | 5 |
-| C++ | 27 | 5 | 5 | 6 | 5 | 6 |
-| F# | 18 | 3 | 4 | 4 | 4 | 3 |
-| TypeScript | 27 | 6 | 5 | 5 | 5 | 6 |
+| Rust | 28 | 6 | 5 | 5 | 6 | 6 |
+| C++ | 28 | 5 | 5 | 6 | 6 | 6 |
+| F# | 19 | 4 | 4 | 4 | 4 | 3 |
+| TypeScript | 28 | 6 | 5 | 6 | 5 | 6 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-14)
+## Today's highlights (2026-10-15)
 
-- **Rust** `perf-memory` [thread_local!'s const { } deletes the init branch, and on macOS the call it leaves behind is most of the cost](entries/2026-10-14.md)
-- **C++** `stdlib-ecosystem` [std::midpoint rounds toward its first argument, so midpoint(high, low) is the overflow-free round-up a last-true search needs](entries/2026-10-14.md)
-- **F#** `idiom` [= says two NaN records differ and .Equals says they match, so List.distinct and HashSet dedupe the same list differently](entries/2026-10-14.md)
-- **TypeScript** `type-system` [ReturnType and Parameters read only the last overload, so a generic wrapper silently drops every other one](entries/2026-10-14.md)
+- **Rust** `frontier` [Rust 1.99 lets you define a C variadic, and next_arg::<f32>() will not compile because C already turned your float into a double](entries/2026-10-15.md)
+- **C++** `perf-memory` [A pmr::vector growing inside a monotonic_buffer_resource keeps every buffer it outgrew](entries/2026-10-15.md)
+- **F#** `type-system` [F# rejects seq<string> :> seq<obj>, and the CLR accepts the same conversion at runtime](entries/2026-10-15.md)
+- **TypeScript** `stdlib-ecosystem` [Iterator.prototype.take(2) closes your generator, so the rest of it is gone](entries/2026-10-15.md)
 
 Also in this entry:
 
-- **The functional angle** - max is a fold only when its operator is associative, and NaN makes every language's default max depend on where the NaN sits
-- **The security angle** - the midpoint is attacker-chosen arithmetic, and the two classic failures are a wrapped index and a loop that never exits
+- **The functional angle** - taking a prefix of a lazy sequence decides who owns the rest, and four languages give four answers
+- **The security angle** - C's `...` is the only calling convention here where the callee guesses how many arguments it got
 
 Every earlier entry is in `entries/`, one file per day.
