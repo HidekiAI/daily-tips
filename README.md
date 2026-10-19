@@ -7,29 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**103 tips across 28 days** (2026-08-28 to 2026-10-15).
+**107 tips across 29 days** (2026-08-28 to 2026-10-19).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 28 | 6 | 5 | 5 | 6 | 6 |
-| C++ | 28 | 5 | 5 | 6 | 6 | 6 |
-| F# | 19 | 4 | 4 | 4 | 4 | 3 |
-| TypeScript | 28 | 6 | 5 | 6 | 5 | 6 |
+| Rust | 29 | 6 | 6 | 5 | 6 | 6 |
+| C++ | 29 | 6 | 5 | 6 | 6 | 6 |
+| F# | 20 | 4 | 4 | 4 | 4 | 4 |
+| TypeScript | 29 | 6 | 5 | 6 | 6 | 6 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-15)
+## Today's highlights (2026-10-19)
 
-- **Rust** `frontier` [Rust 1.99 lets you define a C variadic, and next_arg::<f32>() will not compile because C already turned your float into a double](entries/2026-10-15.md)
-- **C++** `perf-memory` [A pmr::vector growing inside a monotonic_buffer_resource keeps every buffer it outgrew](entries/2026-10-15.md)
-- **F#** `type-system` [F# rejects seq<string> :> seq<obj>, and the CLR accepts the same conversion at runtime](entries/2026-10-15.md)
-- **TypeScript** `stdlib-ecosystem` [Iterator.prototype.take(2) closes your generator, so the rest of it is gone](entries/2026-10-15.md)
+- **Rust** `idiom` [Adding impl Drop breaks every ..Default::default() that still takes a String from the base, and the base was built and dropped in full anyway](entries/2026-10-19.md)
+- **C++** `type-system` [set_option(key, "false") picks the bool overload and stores true, and only std::variant was fixed](entries/2026-10-19.md)
+- **F#** `frontier` [F# 11 lets a plain let hold a let!, and it compiles that let into a hidden nested task](entries/2026-10-19.md)
+- **TypeScript** `perf-memory` [One null in a number[] boxes every double in it, and popping the null does not undo it](entries/2026-10-19.md)
 
 Also in this entry:
 
-- **The functional angle** - taking a prefix of a lazy sequence decides who owns the rest, and four languages give four answers
-- **The security angle** - C's `...` is the only calling convention here where the callee guesses how many arguments it got
-- **FAQ** - 3 follow-up questions
+- **The functional angle** - "absent" costs a full word per element in every language here, and only V8 decides that cost for you
+- **The security angle** - the string "false" turns a flag on in two of the four languages
 
 Every earlier entry is in `entries/`, one file per day.
