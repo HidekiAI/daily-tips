@@ -7,6 +7,15 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
+## Disclaimer
+
+Not every tip was fact-checked.
+Most code samples were compiled and run, but not every one.
+Some claims rest on documentation or memory, and an entry says so where it knows.
+Nothing here is guaranteed.
+All information is provided AS-IS: take it or leave it.
+Do your own fact-checks before you rely on any claim.
+
 **119 tips across 31 days** (2026-08-28 to 2026-10-21).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
