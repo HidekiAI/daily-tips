@@ -7,28 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**107 tips across 29 days** (2026-08-28 to 2026-10-19).
+**111 tips across 30 days** (2026-08-28 to 2026-10-20).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 29 | 6 | 6 | 5 | 6 | 6 |
-| C++ | 29 | 6 | 5 | 6 | 6 | 6 |
-| F# | 20 | 4 | 4 | 4 | 4 | 4 |
-| TypeScript | 29 | 6 | 5 | 6 | 6 | 6 |
+| Rust | 30 | 6 | 6 | 6 | 6 | 6 |
+| C++ | 30 | 6 | 6 | 6 | 6 | 6 |
+| F# | 21 | 4 | 4 | 4 | 5 | 4 |
+| TypeScript | 30 | 6 | 5 | 6 | 6 | 7 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-19)
+## Today's highlights (2026-10-20)
 
-- **Rust** `idiom` [Adding impl Drop breaks every ..Default::default() that still takes a String from the base, and the base was built and dropped in full anyway](entries/2026-10-19.md)
-- **C++** `type-system` [set_option(key, "false") picks the bool overload and stores true, and only std::variant was fixed](entries/2026-10-19.md)
-- **F#** `frontier` [F# 11 lets a plain let hold a let!, and it compiles that let into a hidden nested task](entries/2026-10-19.md)
-- **TypeScript** `perf-memory` [One null in a number[] boxes every double in it, and popping the null does not undo it](entries/2026-10-19.md)
+- **Rust** `stdlib-ecosystem` [slice::chunk_by compares neighbours, not the group's first element, so a tolerance window drifts](entries/2026-10-20.md)
+- **C++** `idiom` [A <= comparator lets std::sort read past your vector, and only at 24 elements or more](entries/2026-10-20.md)
+- **F#** `perf-memory` [Seq.groupBy reads the whole input before it yields one group, and does it again on every enumeration](entries/2026-10-20.md)
+- **TypeScript** `frontier` [Temporal's valueOf throws, its types say never, and tsc still accepts a < b](entries/2026-10-20.md)
 
 Also in this entry:
 
-- **The functional angle** - "absent" costs a full word per element in every language here, and only V8 decides that cost for you
-- **The security angle** - the string "false" turns a flag on in two of the four languages
+- **The functional angle** - grouping comes in two shapes, and only the adjacent one can stream
+- **The security angle** - one bad comparator, four personalities, and only one of them reads memory it does not own
 
 Every earlier entry is in `entries/`, one file per day.
