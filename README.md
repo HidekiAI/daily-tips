@@ -7,28 +7,28 @@ One non-obvious tip each for Rust, C++, F#, and TypeScript. Every entry names
 the minimum language or compiler version, cites a primary source, and closes
 with a question it deliberately leaves unanswered.
 
-**111 tips across 30 days** (2026-08-28 to 2026-10-20).
+**119 tips across 31 days** (2026-08-28 to 2026-10-21).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 30 | 6 | 6 | 6 | 6 | 6 |
-| C++ | 30 | 6 | 6 | 6 | 6 | 6 |
-| F# | 21 | 4 | 4 | 4 | 5 | 4 |
-| TypeScript | 30 | 6 | 5 | 6 | 6 | 7 |
+| Rust | 32 | 6 | 7 | 7 | 6 | 6 |
+| C++ | 32 | 6 | 8 | 6 | 6 | 6 |
+| F# | 23 | 4 | 5 | 5 | 5 | 4 |
+| TypeScript | 32 | 6 | 6 | 6 | 6 | 8 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-20)
+## Today's highlights (2026-10-21)
 
-- **Rust** `stdlib-ecosystem` [slice::chunk_by compares neighbours, not the group's first element, so a tolerance window drifts](entries/2026-10-20.md)
-- **C++** `idiom` [A <= comparator lets std::sort read past your vector, and only at 24 elements or more](entries/2026-10-20.md)
-- **F#** `perf-memory` [Seq.groupBy reads the whole input before it yields one group, and does it again on every enumeration](entries/2026-10-20.md)
-- **TypeScript** `frontier` [Temporal's valueOf throws, its types say never, and tsc still accepts a < b](entries/2026-10-20.md)
+- **Rust** `stdlib-ecosystem` [max_by_key hands back the last of equal maxima and min_by_key the first, so a ported argmax picks a different winner](entries/2026-10-21.md)
+- **C++** `idiom` [const auto& shortest = std::min(load(), fallback) dangles, and wrapping std::min in your own template silences the only warning](entries/2026-10-21.md)
+- **F#** `stdlib-ecosystem` [Map.Count walks the whole tree on every call, so if prices.Count > 0 costs about 1 ms at a million entries](entries/2026-10-21.md)
+- **TypeScript** `frontier` [TypeScript 6.0 defaults types to [], so process and describe vanish until you list @types/node yourself](entries/2026-10-21.md)
 
 Also in this entry:
 
-- **The functional angle** - grouping comes in two shapes, and only the adjacent one can stream
-- **The security angle** - one bad comparator, four personalities, and only one of them reads memory it does not own
+- **The functional angle** - "pick the best" is a fold, and each standard library hides a different tie-break inside it
+- **The security angle** - an implicit tie-break is a policy an attacker can pick their side of
 
 Every earlier entry is in `entries/`, one file per day.
