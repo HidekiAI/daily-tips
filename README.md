@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**119 tips across 31 days** (2026-08-28 to 2026-10-21).
+**123 tips across 31 days** (2026-08-28 to 2026-10-21).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 32 | 6 | 7 | 7 | 6 | 6 |
-| C++ | 32 | 6 | 8 | 6 | 6 | 6 |
-| F# | 23 | 4 | 5 | 5 | 5 | 4 |
-| TypeScript | 32 | 6 | 6 | 6 | 6 | 8 |
+| Rust | 33 | 6 | 7 | 8 | 6 | 6 |
+| C++ | 33 | 6 | 9 | 6 | 6 | 6 |
+| F# | 24 | 4 | 6 | 5 | 5 | 4 |
+| TypeScript | 33 | 6 | 7 | 6 | 6 | 8 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -31,9 +31,13 @@ Do your own fact-checks before you rely on any claim.
 ## Today's highlights (2026-10-21)
 
 - **Rust** `stdlib-ecosystem` [max_by_key hands back the last of equal maxima and min_by_key the first, so a ported argmax picks a different winner](entries/2026-10-21.md)
+- **Rust** `stdlib-ecosystem` [std has two clocks and no calendar, and in jiff one day is not 24 hours](entries/2026-10-21.md)
 - **C++** `idiom` [const auto& shortest = std::min(load(), fallback) dangles, and wrapping std::min in your own template silences the only warning](entries/2026-10-21.md)
+- **C++** `idiom` [2026y/January/31 + months{1} is a valid object holding an invalid date, and sys_days + months{1} lands at 10:29:06](entries/2026-10-21.md)
 - **F#** `stdlib-ecosystem` [Map.Count walks the whole tree on every call, so if prices.Count > 0 costs about 1 ms at a million entries](entries/2026-10-21.md)
+- **F#** `idiom` [A UTC noon equals a local noon, because DateTime compares ticks and ignores Kind](entries/2026-10-21.md)
 - **TypeScript** `frontier` [TypeScript 6.0 defaults types to [], so process and describe vanish until you list @types/node yourself](entries/2026-10-21.md)
+- **TypeScript** `idiom` [new Date("2026-10-31") is UTC, "2026-10-31T00:00" is local, and a comment in parentheses makes it local too](entries/2026-10-21.md)
 
 Also in this entry:
 
