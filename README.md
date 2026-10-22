@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**135 tips across 32 days** (2026-08-28 to 2026-10-22).
+**139 tips across 32 days** (2026-08-28 to 2026-10-22).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 36 | 7 | 8 | 9 | 6 | 6 |
-| C++ | 36 | 7 | 10 | 6 | 6 | 7 |
-| F# | 27 | 4 | 7 | 6 | 6 | 4 |
-| TypeScript | 36 | 6 | 8 | 7 | 6 | 9 |
+| Rust | 37 | 7 | 8 | 10 | 6 | 6 |
+| C++ | 37 | 7 | 11 | 6 | 6 | 7 |
+| F# | 28 | 4 | 7 | 7 | 6 | 4 |
+| TypeScript | 37 | 6 | 9 | 7 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -31,9 +31,13 @@ Do your own fact-checks before you rely on any claim.
 ## Today's highlights (2026-10-22)
 
 - **Rust** `type-system` [Since 1.92, load_setting()?; with nothing naming T is an error, and in edition 2024 T falls back to ! instead of ()](entries/2026-10-22.md)
+- **Rust** `stdlib-ecosystem` [jsonwebtoken accepts a token 60 seconds after exp, never checks nbf, and treats a millisecond exp as valid until the year 58778](entries/2026-10-22.md)
 - **C++** `frontier` [C++26 optional<T&> rebinds on assignment where T& writes through, and value_or still hands you a copy](entries/2026-10-22.md)
+- **C++** `idiom` [sys_info::save is -60 min for Europe/Dublin in January, so save != 0min calls an Irish winter DST](entries/2026-10-22.md)
 - **F#** `perf-memory` [[<Struct>] on a record makes generic = allocate 64 bytes a compare, and the reference record it replaced allocated none](entries/2026-10-22.md)
+- **F#** `stdlib-ecosystem` [DateTimeOffset.Parse turns RFC 3339's offset unknown into +00:00, and a missing offset into the server's own zone](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [Set.prototype.intersection walks whichever set is smaller, so the result's order and the methods it calls depend on sizes](entries/2026-10-22.md)
+- **TypeScript** `idiom` [Node reads process.env.TZ live and never validates it, so a typo is silent UTC, UTC-5 is five hours east, and a string comes back undefined](entries/2026-10-22.md)
 
 Also in this entry:
 
