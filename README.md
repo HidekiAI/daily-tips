@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**155 tips across 32 days** (2026-08-28 to 2026-10-22).
+**159 tips across 32 days** (2026-08-28 to 2026-10-22).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 41 | 7 | 9 | 12 | 7 | 6 |
-| C++ | 41 | 9 | 12 | 7 | 6 | 7 |
-| F# | 32 | 4 | 9 | 9 | 6 | 4 |
-| TypeScript | 41 | 6 | 10 | 10 | 6 | 9 |
+| Rust | 42 | 7 | 9 | 13 | 7 | 6 |
+| C++ | 42 | 9 | 13 | 7 | 6 | 7 |
+| F# | 33 | 4 | 9 | 10 | 6 | 4 |
+| TypeScript | 42 | 6 | 10 | 11 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -36,24 +36,28 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `perf-memory` [SystemTime holds nanoseconds and macOS fills in only microseconds, and as_secs_f64 of today's time already loses 72 ns](entries/2026-10-22.md)
 - **Rust** `stdlib-ecosystem` [tokio::time::interval defaults to Burst, so after a 350 ms stall it fires three ticks in the same millisecond](entries/2026-10-22.md)
 - **Rust** `stdlib-ecosystem` [tokio's paused time sleeps an hour in microseconds, and std::time never notices](entries/2026-10-22.md)
+- **Rust** `stdlib-ecosystem` [jiff refuses a stored timestamp whose offset no longer matches its zone, and chrono refuses the bracket entirely](entries/2026-10-22.md)
 - **C++** `frontier` [C++26 optional<T&> rebinds on assignment where T& writes through, and value_or still hands you a copy](entries/2026-10-22.md)
 - **C++** `idiom` [sys_info::save is -60 min for Europe/Dublin in January, so save != 0min calls an Irish winter DST](entries/2026-10-22.md)
 - **C++** `type-system` [zoned_time == compares the zone too, and there is no <, so std::set<zoned_time> does not compile](entries/2026-10-22.md)
 - **C++** `stdlib-ecosystem` [system_clock counts microseconds on libc++ and nanoseconds on libstdc++, so .count() changes meaning by 1000x and libstdc++'s clock ends in 2262](entries/2026-10-22.md)
 - **C++** `idiom` [There is no standard periodic timer, so the loop you write picks the policy, and the textbook sleep_until loop bursts](entries/2026-10-22.md)
 - **C++** `type-system` [A frozen test clock passed to condition_variable::wait_until still waits in real time, then reports no_timeout](entries/2026-10-22.md)
+- **C++** `idiom` [chrono::parse reads an RFC 9557 string up to the bracket and reports success, so the zone is silently ignored](entries/2026-10-22.md)
 - **F#** `perf-memory` [[<Struct>] on a record makes generic = allocate 64 bytes a compare, and the reference record it replaced allocated none](entries/2026-10-22.md)
 - **F#** `stdlib-ecosystem` [DateTimeOffset.Parse turns RFC 3339's offset unknown into +00:00, and a missing offset into the server's own zone](entries/2026-10-22.md)
 - **F#** `stdlib-ecosystem` [DateTimeOffset equality ignores the offset, so a Dictionary keyed by it keeps the first key and the last value](entries/2026-10-22.md)
 - **F#** `idiom` [DateTime.UtcNow returns the same value for 98% of back-to-back calls on macOS, so an id built from it repeats](entries/2026-10-22.md)
 - **F#** `idiom` [System.Threading.Timer runs a slow callback on top of itself, three copies at once, and PeriodicTimer cannot](entries/2026-10-22.md)
 - **F#** `stdlib-ecosystem` [FakeTimeProvider starts on 2000-01-01 in UTC, and DateTime.UtcNow never asks it](entries/2026-10-22.md)
+- **F#** `stdlib-ecosystem` [.NET cannot read an RFC 9557 string, so one Temporal field in a JSON request fails the whole bind](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [Set.prototype.intersection walks whichever set is smaller, so the result's order and the methods it calls depend on sizes](entries/2026-10-22.md)
 - **TypeScript** `idiom` [Node reads process.env.TZ live and never validates it, so a typo is silent UTC, UTC-5 is five hours east, and a string comes back undefined](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [Temporal.ZonedDateTime.equals says false while compare says 0, and a Set uses neither](entries/2026-10-22.md)
 - **TypeScript** `idiom` [A microsecond updated_at read into a Date never matches again, so optimistic concurrency refuses every save](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [setInterval never bursts and never catches up, so after a stall the whole schedule shifts later](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [mock.timers with Date starts at 1970, and performance.now() and AbortSignal.timeout keep real time](entries/2026-10-22.md)
+- **TypeScript** `stdlib-ecosystem` [Temporal writes the bracket into JSON, Date reads it as NaN, and a stale offset throws unless you choose who moves](entries/2026-10-22.md)
 
 Also in this entry:
 
