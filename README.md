@@ -16,40 +16,28 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**131 tips across 31 days** (2026-08-28 to 2026-10-21).
+**135 tips across 32 days** (2026-08-28 to 2026-10-22).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 35 | 6 | 8 | 9 | 6 | 6 |
-| C++ | 35 | 7 | 10 | 6 | 6 | 6 |
-| F# | 26 | 4 | 7 | 6 | 5 | 4 |
-| TypeScript | 35 | 6 | 8 | 6 | 6 | 9 |
+| Rust | 36 | 7 | 8 | 9 | 6 | 6 |
+| C++ | 36 | 7 | 10 | 6 | 6 | 7 |
+| F# | 27 | 4 | 7 | 6 | 6 | 4 |
+| TypeScript | 36 | 6 | 8 | 7 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-21)
+## Today's highlights (2026-10-22)
 
-- **Rust** `stdlib-ecosystem` [max_by_key hands back the last of equal maxima and min_by_key the first, so a ported argmax picks a different winner](entries/2026-10-21.md)
-- **Rust** `stdlib-ecosystem` [std has two clocks and no calendar, and in jiff one day is not 24 hours](entries/2026-10-21.md)
-- **Rust** `stdlib-ecosystem` [The cron crate skips 02:30 on spring-forward and runs 01:30 twice on fall-back, and croner does neither](entries/2026-10-21.md)
-- **Rust** `idiom` [A u32 millisecond tick wraps every 49.7 days, now - start panics in debug, and now > deadline is wrong in both](entries/2026-10-21.md)
-- **C++** `idiom` [const auto& shortest = std::min(load(), fallback) dangles, and wrapping std::min in your own template silences the only warning](entries/2026-10-21.md)
-- **C++** `idiom` [2026y/January/31 + months{1} is a valid object holding an invalid date, and sys_days + months{1} lands at 10:29:06](entries/2026-10-21.md)
-- **C++** `type-system` [Every epoch is sys_days{origin} + duration<Rep>, and duration<uint32_t> wraps NTP back to 1900 with no warning](entries/2026-10-21.md)
-- **C++** `idiom` [parse("%m/%d/%y") reads 68 as 2068 and 69 as 1969, and Apple's libc++ has no parse at all](entries/2026-10-21.md)
-- **F#** `stdlib-ecosystem` [Map.Count walks the whole tree on every call, so if prices.Count > 0 costs about 1 ms at a million entries](entries/2026-10-21.md)
-- **F#** `idiom` [A UTC noon equals a local noon, because DateTime compares ticks and ignores Kind](entries/2026-10-21.md)
-- **F#** `stdlib-ecosystem` [XmlConvert.ToTimeSpan "P1M" is 30 days, so Jan 31 plus "P1M" is March 2](entries/2026-10-21.md)
-- **F#** `idiom` ["1/1/49" is 2049 and "1/1/50" is 1950, and the window is a mutable property of the culture's calendar](entries/2026-10-21.md)
-- **TypeScript** `frontier` [TypeScript 6.0 defaults types to [], so process and describe vanish until you list @types/node yourself](entries/2026-10-21.md)
-- **TypeScript** `idiom` [new Date("2026-10-31") is UTC, "2026-10-31T00:00" is local, and a comment in parentheses makes it local too](entries/2026-10-21.md)
-- **TypeScript** `frontier` [Temporal turns every Date guess into an option, and its defaults still guess](entries/2026-10-21.md)
-- **TypeScript** `idiom` [setTimeout(fn, 30 days) fires after 1 ms, and NaN does the same without a warning](entries/2026-10-21.md)
+- **Rust** `type-system` [Since 1.92, load_setting()?; with nothing naming T is an error, and in edition 2024 T falls back to ! instead of ()](entries/2026-10-22.md)
+- **C++** `frontier` [C++26 optional<T&> rebinds on assignment where T& writes through, and value_or still hands you a copy](entries/2026-10-22.md)
+- **F#** `perf-memory` [[<Struct>] on a record makes generic = allocate 64 bytes a compare, and the reference record it replaced allocated none](entries/2026-10-22.md)
+- **TypeScript** `stdlib-ecosystem` [Set.prototype.intersection walks whichever set is smaller, so the result's order and the methods it calls depend on sizes](entries/2026-10-22.md)
 
 Also in this entry:
 
-- **The functional angle** - "pick the best" is a fold, and each standard library hides a different tie-break inside it
-- **The security angle** - an implicit tie-break is a policy an attacker can pick their side of
+- **The functional angle** - intersection is a filter over one side, and Rust and TypeScript choose the side by size
+- **The security angle** - a set-like whose has and keys disagree makes your allow-list check depend on the list's length
 
 Every earlier entry is in `entries/`, one file per day.
