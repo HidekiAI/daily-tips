@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**147 tips across 32 days** (2026-08-28 to 2026-10-22).
+**151 tips across 32 days** (2026-08-28 to 2026-10-22).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 39 | 7 | 9 | 10 | 7 | 6 |
-| C++ | 39 | 8 | 11 | 7 | 6 | 7 |
-| F# | 30 | 4 | 8 | 8 | 6 | 4 |
-| TypeScript | 39 | 6 | 10 | 8 | 6 | 9 |
+| Rust | 40 | 7 | 9 | 11 | 7 | 6 |
+| C++ | 40 | 8 | 12 | 7 | 6 | 7 |
+| F# | 31 | 4 | 9 | 8 | 6 | 4 |
+| TypeScript | 40 | 6 | 10 | 9 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -34,18 +34,22 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `stdlib-ecosystem` [jsonwebtoken accepts a token 60 seconds after exp, never checks nbf, and treats a millisecond exp as valid until the year 58778](entries/2026-10-22.md)
 - **Rust** `idiom` [civil::DateTime orders by the wall clock, so across the fall-back hour a refund sorts before the payment it refunds](entries/2026-10-22.md)
 - **Rust** `perf-memory` [SystemTime holds nanoseconds and macOS fills in only microseconds, and as_secs_f64 of today's time already loses 72 ns](entries/2026-10-22.md)
+- **Rust** `stdlib-ecosystem` [tokio::time::interval defaults to Burst, so after a 350 ms stall it fires three ticks in the same millisecond](entries/2026-10-22.md)
 - **C++** `frontier` [C++26 optional<T&> rebinds on assignment where T& writes through, and value_or still hands you a copy](entries/2026-10-22.md)
 - **C++** `idiom` [sys_info::save is -60 min for Europe/Dublin in January, so save != 0min calls an Irish winter DST](entries/2026-10-22.md)
 - **C++** `type-system` [zoned_time == compares the zone too, and there is no <, so std::set<zoned_time> does not compile](entries/2026-10-22.md)
 - **C++** `stdlib-ecosystem` [system_clock counts microseconds on libc++ and nanoseconds on libstdc++, so .count() changes meaning by 1000x and libstdc++'s clock ends in 2262](entries/2026-10-22.md)
+- **C++** `idiom` [There is no standard periodic timer, so the loop you write picks the policy, and the textbook sleep_until loop bursts](entries/2026-10-22.md)
 - **F#** `perf-memory` [[<Struct>] on a record makes generic = allocate 64 bytes a compare, and the reference record it replaced allocated none](entries/2026-10-22.md)
 - **F#** `stdlib-ecosystem` [DateTimeOffset.Parse turns RFC 3339's offset unknown into +00:00, and a missing offset into the server's own zone](entries/2026-10-22.md)
 - **F#** `stdlib-ecosystem` [DateTimeOffset equality ignores the offset, so a Dictionary keyed by it keeps the first key and the last value](entries/2026-10-22.md)
 - **F#** `idiom` [DateTime.UtcNow returns the same value for 98% of back-to-back calls on macOS, so an id built from it repeats](entries/2026-10-22.md)
+- **F#** `idiom` [System.Threading.Timer runs a slow callback on top of itself, three copies at once, and PeriodicTimer cannot](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [Set.prototype.intersection walks whichever set is smaller, so the result's order and the methods it calls depend on sizes](entries/2026-10-22.md)
 - **TypeScript** `idiom` [Node reads process.env.TZ live and never validates it, so a typo is silent UTC, UTC-5 is five hours east, and a string comes back undefined](entries/2026-10-22.md)
 - **TypeScript** `stdlib-ecosystem` [Temporal.ZonedDateTime.equals says false while compare says 0, and a Set uses neither](entries/2026-10-22.md)
 - **TypeScript** `idiom` [A microsecond updated_at read into a Date never matches again, so optimistic concurrency refuses every save](entries/2026-10-22.md)
+- **TypeScript** `stdlib-ecosystem` [setInterval never bursts and never catches up, so after a stall the whole schedule shifts later](entries/2026-10-22.md)
 
 Also in this entry:
 
