@@ -16,68 +16,28 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**175 tips across 32 days** (2026-08-28 to 2026-10-22).
+**179 tips across 33 days** (2026-08-28 to 2026-10-23).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 46 | 9 | 9 | 15 | 7 | 6 |
-| C++ | 46 | 12 | 13 | 8 | 6 | 7 |
-| F# | 37 | 4 | 12 | 11 | 6 | 4 |
-| TypeScript | 46 | 6 | 10 | 15 | 6 | 9 |
+| Rust | 47 | 9 | 9 | 15 | 7 | 7 |
+| C++ | 47 | 12 | 13 | 8 | 7 | 7 |
+| F# | 38 | 5 | 12 | 11 | 6 | 4 |
+| TypeScript | 47 | 6 | 11 | 15 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-22)
+## Today's highlights (2026-10-23)
 
-- **Rust** `type-system` [Since 1.92, load_setting()?; with nothing naming T is an error, and in edition 2024 T falls back to ! instead of ()](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [jsonwebtoken accepts a token 60 seconds after exp, never checks nbf, and treats a millisecond exp as valid until the year 58778](entries/2026-10-22.md)
-- **Rust** `idiom` [civil::DateTime orders by the wall clock, so across the fall-back hour a refund sorts before the payment it refunds](entries/2026-10-22.md)
-- **Rust** `perf-memory` [SystemTime holds nanoseconds and macOS fills in only microseconds, and as_secs_f64 of today's time already loses 72 ns](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [tokio::time::interval defaults to Burst, so after a 350 ms stall it fires three ticks in the same millisecond](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [tokio's paused time sleeps an hour in microseconds, and std::time never notices](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [jiff refuses a stored timestamp whose offset no longer matches its zone, and chrono refuses the bracket entirely](entries/2026-10-22.md)
-- **Rust** `type-system` [jiff adds a month to Jan 31 and gets Feb 28, and the difference back is P28D, not P1M](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [std::time::Duration has no Display, prints 25 hours as 90000s, and {:.1?} rounds half to even](entries/2026-10-22.md)
-- **Rust** `stdlib-ecosystem` [The rrule crate follows RFC 5545 and skips months without a 31st, so six monthly occurrences take ten months](entries/2026-10-22.md)
-- **Rust** `type-system` [jiff gives Sunday four numbers, 0, 1, 6 and 7, and only some wrong conversions are caught](entries/2026-10-22.md)
-- **C++** `frontier` [C++26 optional<T&> rebinds on assignment where T& writes through, and value_or still hands you a copy](entries/2026-10-22.md)
-- **C++** `idiom` [sys_info::save is -60 min for Europe/Dublin in January, so save != 0min calls an Irish winter DST](entries/2026-10-22.md)
-- **C++** `type-system` [zoned_time == compares the zone too, and there is no <, so std::set<zoned_time> does not compile](entries/2026-10-22.md)
-- **C++** `stdlib-ecosystem` [system_clock counts microseconds on libc++ and nanoseconds on libstdc++, so .count() changes meaning by 1000x and libstdc++'s clock ends in 2262](entries/2026-10-22.md)
-- **C++** `idiom` [There is no standard periodic timer, so the loop you write picks the policy, and the textbook sleep_until loop bursts](entries/2026-10-22.md)
-- **C++** `type-system` [A frozen test clock passed to condition_variable::wait_until still waits in real time, then reports no_timeout](entries/2026-10-22.md)
-- **C++** `idiom` [chrono::parse reads an RFC 9557 string up to the bracket and reports success, so the zone is silently ignored](entries/2026-10-22.md)
-- **C++** `type-system` [year_month subtraction counts two months between Jan 31 and Mar 1, which are 29 days apart](entries/2026-10-22.md)
-- **C++** `stdlib-ecosystem` [std::format("{:%T}", 25h) is 01:00:00 on libc++ and 25:00:00 on libstdc++, and libc++ throws for hh_mm_ss{25h}](entries/2026-10-22.md)
-- **C++** `type-system` [The last Friday and the last day are types in chrono, and the fifth Friday of February rolls silently into March](entries/2026-10-22.md)
-- **C++** `type-system` [weekday{7} and weekday{0} are both Sunday, and weekday subtraction is days since, always 0 to 6](entries/2026-10-22.md)
-- **F#** `perf-memory` [[<Struct>] on a record makes generic = allocate 64 bytes a compare, and the reference record it replaced allocated none](entries/2026-10-22.md)
-- **F#** `stdlib-ecosystem` [DateTimeOffset.Parse turns RFC 3339's offset unknown into +00:00, and a missing offset into the server's own zone](entries/2026-10-22.md)
-- **F#** `stdlib-ecosystem` [DateTimeOffset equality ignores the offset, so a Dictionary keyed by it keeps the first key and the last value](entries/2026-10-22.md)
-- **F#** `idiom` [DateTime.UtcNow returns the same value for 98% of back-to-back calls on macOS, so an id built from it repeats](entries/2026-10-22.md)
-- **F#** `idiom` [System.Threading.Timer runs a slow callback on top of itself, three copies at once, and PeriodicTimer cannot](entries/2026-10-22.md)
-- **F#** `stdlib-ecosystem` [FakeTimeProvider starts on 2000-01-01 in UTC, and DateTime.UtcNow never asks it](entries/2026-10-22.md)
-- **F#** `stdlib-ecosystem` [.NET cannot read an RFC 9557 string, so one Temporal field in a JSON request fails the whole bind](entries/2026-10-22.md)
-- **F#** `idiom` [The two usual age formulas disagree on Feb 28, so an 18 or older check passes with one and fails with the other](entries/2026-10-22.md)
-- **F#** `idiom` [TimeSpan.ToString(@"hh\:mm\:ss") prints 25 hours as 01:00:00, because hh is the Hours property, not the total](entries/2026-10-22.md)
-- **F#** `idiom` [Ical.Net, AddMonths from the anchor and AddMonths from the last occurrence give three monthly from Jan 31 schedules](entries/2026-10-22.md)
-- **F#** `stdlib-ecosystem` [2027-01-01 is week 1 in en-US, week 53 in en-GB and week 41 in fa-IR, and a container's culture is invariant](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [Set.prototype.intersection walks whichever set is smaller, so the result's order and the methods it calls depend on sizes](entries/2026-10-22.md)
-- **TypeScript** `idiom` [Node reads process.env.TZ live and never validates it, so a typo is silent UTC, UTC-5 is five hours east, and a string comes back undefined](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [Temporal.ZonedDateTime.equals says false while compare says 0, and a Set uses neither](entries/2026-10-22.md)
-- **TypeScript** `idiom` [A microsecond updated_at read into a Date never matches again, so optimistic concurrency refuses every save](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [setInterval never bursts and never catches up, so after a stall the whole schedule shifts later](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [mock.timers with Date starts at 1970, and performance.now() and AbortSignal.timeout keep real time](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [Temporal writes the bracket into JSON, Date reads it as NaN, and a stale offset throws unless you choose who moves](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [Temporal's add puts a Feb 29 birthday on Feb 28, and its until says the person is not that age yet](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [new Date(ms).toISOString().slice(11, 19) prints 25 hours as 01:00:00, and only Node 26 has a real duration formatter](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [npm rrule with tzid returns different instants depending on the server's TZ](entries/2026-10-22.md)
-- **TypeScript** `stdlib-ecosystem` [Node 22's locale.weekInfo became Node 26's locale.getWeekInfo(), and minimalDays disappeared on the way](entries/2026-10-22.md)
+- **Rust** `frontier` [Rust 1.98 put itoa in core, and the &str it hands back borrows the buffer until you are done with it](entries/2026-10-23.md)
+- **C++** `perf-memory` [hardware_destructive_interference_size is 256 on every arm64 compiler here, and 64 already stopped false sharing on an M3](entries/2026-10-23.md)
+- **F#** `type-system` [Since F# 9 an active pattern's return type picks its representation, and only the option form allocates](entries/2026-10-23.md)
+- **TypeScript** `idiom` [Array.isArray turns a readonly string[] into any[], and the else branch never loses the array](entries/2026-10-23.md)
 
 Also in this entry:
 
-- **The functional angle** - intersection is a filter over one side, and Rust and TypeScript choose the side by size
-- **The security angle** - a set-like whose has and keys disagree makes your allow-list check depend on the list's length
+- **The functional angle** - a count each thread folds and returns needs no padding at all
+- **The security angle** - Array.isArray on parsed JSON is a grant of trust, and a string passes an array check by substring
 
 Every earlier entry is in `entries/`, one file per day.
