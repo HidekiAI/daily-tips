@@ -16,28 +16,28 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**179 tips across 33 days** (2026-08-28 to 2026-10-23).
+**183 tips across 34 days** (2026-08-28 to 2026-10-26).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 47 | 9 | 9 | 15 | 7 | 7 |
-| C++ | 47 | 12 | 13 | 8 | 7 | 7 |
-| F# | 38 | 5 | 12 | 11 | 6 | 4 |
-| TypeScript | 47 | 6 | 11 | 15 | 6 | 9 |
+| Rust | 48 | 9 | 10 | 15 | 7 | 7 |
+| C++ | 48 | 12 | 13 | 8 | 7 | 8 |
+| F# | 39 | 5 | 12 | 11 | 7 | 4 |
+| TypeScript | 48 | 7 | 11 | 15 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-23)
+## Today's highlights (2026-10-26)
 
-- **Rust** `frontier` [Rust 1.98 put itoa in core, and the &str it hands back borrows the buffer until you are done with it](entries/2026-10-23.md)
-- **C++** `perf-memory` [hardware_destructive_interference_size is 256 on every arm64 compiler here, and 64 already stopped false sharing on an M3](entries/2026-10-23.md)
-- **F#** `type-system` [Since F# 9 an active pattern's return type picks its representation, and only the option form allocates](entries/2026-10-23.md)
-- **TypeScript** `idiom` [Array.isArray turns a readonly string[] into any[], and the else branch never loses the array](entries/2026-10-23.md)
+- **Rust** `idiom` [derive(Ord) compares fields top to bottom and variants by discriminant value, so moving a field or renumbering a variant re-sorts everything](entries/2026-10-26.md)
+- **C++** `frontier` [GCC 16 ships C++26 contracts, and -std=c++26 alone compiles them but does not link](entries/2026-10-26.md)
+- **F#** `perf-memory` [A struct union keeps every case's fields side by side unless they share a name and a type, so naming each case's float differently doubles its size](entries/2026-10-26.md)
+- **TypeScript** `type-system` [readonly on a property is ignored by assignability, so a Readonly<T> passes straight into a function that mutates it](entries/2026-10-26.md)
 
 Also in this entry:
 
-- **The functional angle** - a count each thread folds and returns needs no padding at all
-- **The security angle** - Array.isArray on parsed JSON is a grant of trust, and a string passes an array check by substring
+- **The functional angle** - a derived ordering is a declaration-order decision, and only TypeScript makes you write it down
+- **The security angle** - an authorization check written as an ordering is rewritten by the next enum edit
 
 Every earlier entry is in `entries/`, one file per day.
