@@ -16,28 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**183 tips across 34 days** (2026-08-28 to 2026-10-26).
+**187 tips across 35 days** (2026-08-28 to 2026-10-27).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 48 | 9 | 10 | 15 | 7 | 7 |
-| C++ | 48 | 12 | 13 | 8 | 7 | 8 |
-| F# | 39 | 5 | 12 | 11 | 7 | 4 |
-| TypeScript | 48 | 7 | 11 | 15 | 6 | 9 |
+| Rust | 49 | 9 | 10 | 15 | 8 | 7 |
+| C++ | 49 | 12 | 14 | 8 | 7 | 8 |
+| F# | 40 | 5 | 12 | 11 | 7 | 5 |
+| TypeScript | 49 | 7 | 11 | 16 | 6 | 9 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-26)
+## Today's highlights (2026-10-27)
 
-- **Rust** `idiom` [derive(Ord) compares fields top to bottom and variants by discriminant value, so moving a field or renumbering a variant re-sorts everything](entries/2026-10-26.md)
-- **C++** `frontier` [GCC 16 ships C++26 contracts, and -std=c++26 alone compiles them but does not link](entries/2026-10-26.md)
-- **F#** `perf-memory` [A struct union keeps every case's fields side by side unless they share a name and a type, so naming each case's float differently doubles its size](entries/2026-10-26.md)
-- **TypeScript** `type-system` [readonly on a property is ignored by assignability, so a Readonly<T> passes straight into a function that mutates it](entries/2026-10-26.md)
+- **Rust** `perf-memory` [vec![0; n] is a calloc in every build, and with_capacity plus resize(n, 0) is one only when the optimizer says so](entries/2026-10-27.md)
+- **C++** `idiom` [An empty optional is less than every value, so an unset ceiling rejects everything and an unset floor lets everything through](entries/2026-10-27.md)
+- **F#** `frontier` [FSharp.Core 11's Task.parallelLimit takes factories, not tasks, because a Task you can hand it is already running](entries/2026-10-27.md)
+- **TypeScript** `stdlib-ecosystem` [Object.groupBy returns a null-prototype object typed as Partial<Record>, so .hasOwnProperty throws and tsc says nothing](entries/2026-10-27.md)
 
 Also in this entry:
 
-- **The functional angle** - a derived ordering is a declaration-order decision, and only TypeScript makes you write it down
-- **The security angle** - an authorization check written as an ordering is rewritten by the next enum edit
+- **The functional angle** - you can only schedule a description, and half of these languages hand you a receipt
+- **The security angle** - a null prototype protects the groups until you copy them into `{}`
+- **FAQ** - 5 follow-up questions
 
 Every earlier entry is in `entries/`, one file per day.
