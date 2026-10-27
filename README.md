@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**195 tips across 35 days** (2026-08-28 to 2026-10-27).
+**199 tips across 35 days** (2026-08-28 to 2026-10-27).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 51 | 10 | 11 | 15 | 8 | 7 |
-| C++ | 51 | 12 | 15 | 9 | 7 | 8 |
-| F# | 42 | 6 | 13 | 11 | 7 | 5 |
-| TypeScript | 51 | 7 | 12 | 16 | 6 | 10 |
+| Rust | 52 | 10 | 12 | 15 | 8 | 7 |
+| C++ | 52 | 12 | 15 | 9 | 7 | 9 |
+| F# | 43 | 6 | 13 | 11 | 8 | 5 |
+| TypeScript | 52 | 7 | 13 | 16 | 6 | 10 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -33,15 +33,19 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `perf-memory` [vec![0; n] is a calloc in every build, and with_capacity plus resize(n, 0) is one only when the optimizer says so](entries/2026-10-27.md)
 - **Rust** `idiom` [derive(Ord) puts Ok before Err, so max() over results returns the failure and sort() moves every error to the end](entries/2026-10-27.md)
 - **Rust** `type-system` [Since 1.82 an Err(Infallible) arm can be left out, but only by value, so the same match behind a reference needs it back](entries/2026-10-27.md)
+- **Rust** `idiom` [rustc warns when you loop over an Option, and says nothing when .flatten() over Results throws every error away](entries/2026-10-27.md)
 - **C++** `idiom` [An empty optional is less than every value, so an unset ceiling rejects everything and an unset floor lets everything through](entries/2026-10-27.md)
 - **C++** `stdlib-ecosystem` [std::expected's lvalue value() copies the error into the exception, so a move-only E compiles only as std::move(result).value()](entries/2026-10-27.md)
 - **C++** `idiom` [std::visit picks a handler by overload resolution, so a new double alternative lands in the int handler as 2 with no warning](entries/2026-10-27.md)
+- **C++** `frontier` [C++26 made std::optional a range of zero or one, so nested range-for is a nested select, and begin() on a temporary dangles](entries/2026-10-27.md)
 - **F#** `frontier` [FSharp.Core 11's Task.parallelLimit takes factories, not tasks, because a Task you can hand it is already running](entries/2026-10-27.md)
 - **F#** `type-system` [None is a literal null at runtime, so None.ToString() throws and string None prints nothing](entries/2026-10-27.md)
 - **F#** `idiom` [A complete match on an enum still warns FS0104, and the _ that silences it swallows every member added later](entries/2026-10-27.md)
+- **F#** `perf-memory` [option is not a sequence, so for over one is FS0693, and the nested-for workaround allocated four times what List.choose did](entries/2026-10-27.md)
 - **TypeScript** `stdlib-ecosystem` [Object.groupBy returns a null-prototype object typed as Partial<Record>, so .hasOwnProperty throws and tsc says nothing](entries/2026-10-27.md)
 - **TypeScript** `frontier` [Effect 4 made Option a plain value, so yield* on one dies as a defect, even when it holds Some](entries/2026-10-27.md)
 - **TypeScript** `idiom` [satisfies never proves the switch is complete for the types, and the default arm's return value decides what an unknown tag from JSON gets](entries/2026-10-27.md)
+- **TypeScript** `idiom` [flatMap is JavaScript's option of zero or one, and it keeps a bare value as if bracketed and an undefined as a hole](entries/2026-10-27.md)
 
 Also in this entry:
 
