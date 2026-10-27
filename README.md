@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**187 tips across 35 days** (2026-08-28 to 2026-10-27).
+**191 tips across 35 days** (2026-08-28 to 2026-10-27).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 49 | 9 | 10 | 15 | 8 | 7 |
-| C++ | 49 | 12 | 14 | 8 | 7 | 8 |
-| F# | 40 | 5 | 12 | 11 | 7 | 5 |
-| TypeScript | 49 | 7 | 11 | 16 | 6 | 9 |
+| Rust | 50 | 9 | 11 | 15 | 8 | 7 |
+| C++ | 50 | 12 | 14 | 9 | 7 | 8 |
+| F# | 41 | 6 | 12 | 11 | 7 | 5 |
+| TypeScript | 50 | 7 | 11 | 16 | 6 | 10 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -31,9 +31,13 @@ Do your own fact-checks before you rely on any claim.
 ## Today's highlights (2026-10-27)
 
 - **Rust** `perf-memory` [vec![0; n] is a calloc in every build, and with_capacity plus resize(n, 0) is one only when the optimizer says so](entries/2026-10-27.md)
+- **Rust** `idiom` [derive(Ord) puts Ok before Err, so max() over results returns the failure and sort() moves every error to the end](entries/2026-10-27.md)
 - **C++** `idiom` [An empty optional is less than every value, so an unset ceiling rejects everything and an unset floor lets everything through](entries/2026-10-27.md)
+- **C++** `stdlib-ecosystem` [std::expected's lvalue value() copies the error into the exception, so a move-only E compiles only as std::move(result).value()](entries/2026-10-27.md)
 - **F#** `frontier` [FSharp.Core 11's Task.parallelLimit takes factories, not tasks, because a Task you can hand it is already running](entries/2026-10-27.md)
+- **F#** `type-system` [None is a literal null at runtime, so None.ToString() throws and string None prints nothing](entries/2026-10-27.md)
 - **TypeScript** `stdlib-ecosystem` [Object.groupBy returns a null-prototype object typed as Partial<Record>, so .hasOwnProperty throws and tsc says nothing](entries/2026-10-27.md)
+- **TypeScript** `frontier` [Effect 4 made Option a plain value, so yield* on one dies as a defect, even when it holds Some](entries/2026-10-27.md)
 
 Also in this entry:
 
