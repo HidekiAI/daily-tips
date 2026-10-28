@@ -41,4 +41,12 @@ Also in this entry:
 - **The security angle** - the bound you did not choose is a denial of service in Rust and a read past the end in C++
 - **FAQ**
 
+## Specials
+
+One topic compared across all four languages, outside the daily rotation. Each link opens part 1.
+
+- [functional programming](entries/2026-10-27-extra-1-of-12.md) (2026-10-27, 12 parts) - absence and failure as values
+- [timestamps](entries/2026-10-21-extra-1-of-13.md) (2026-10-21, 13 parts) - how Jan 31 plus one month becomes four different days
+- [float to integer](entries/2026-10-20-extra.md) (2026-10-20) - four ways to lose a cent
+
 Every earlier entry is in `entries/`, one file per day.
