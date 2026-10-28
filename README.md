@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**235 tips across 36 days** (2026-08-28 to 2026-10-28).
+**239 tips across 36 days** (2026-08-28 to 2026-10-28).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 61 | 11 | 16 | 17 | 10 | 7 |
-| C++ | 61 | 13 | 18 | 11 | 9 | 10 |
-| F# | 52 | 7 | 14 | 11 | 14 | 6 |
-| TypeScript | 61 | 9 | 17 | 17 | 7 | 11 |
+| Rust | 62 | 11 | 17 | 17 | 10 | 7 |
+| C++ | 62 | 13 | 19 | 11 | 9 | 10 |
+| F# | 53 | 7 | 15 | 11 | 14 | 6 |
+| TypeScript | 62 | 9 | 17 | 17 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
