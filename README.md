@@ -16,30 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**239 tips across 36 days** (2026-08-28 to 2026-10-28).
+**243 tips across 37 days** (2026-08-28 to 2026-10-30).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 62 | 11 | 17 | 17 | 10 | 7 |
-| C++ | 62 | 13 | 19 | 11 | 9 | 10 |
-| F# | 53 | 7 | 15 | 11 | 14 | 6 |
-| TypeScript | 62 | 9 | 17 | 17 | 7 | 12 |
+| Rust | 63 | 11 | 17 | 17 | 10 | 8 |
+| C++ | 63 | 13 | 19 | 11 | 10 | 10 |
+| F# | 54 | 7 | 15 | 12 | 14 | 6 |
+| TypeScript | 63 | 10 | 17 | 17 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-28)
+## Today's highlights (2026-10-30)
 
-- **Rust** `stdlib-ecosystem` [BTreeMap::range panics on reversed bounds and on an excluded pair, but only when the map is not empty](entries/2026-10-28.md)
-- **C++** `type-system` [decltype(auto) returns a reference when you wrap the name in parentheses](entries/2026-10-28.md)
-- **F#** `frontier` [F# 11 makes two delegates built from the same method equal, so -= on an event finds them, and the lambda form still never does](entries/2026-10-28.md)
-- **TypeScript** `perf-memory` [delete turns a per-request object into a dictionary, even for the last key, and TS2790 is what pushes you into it](entries/2026-10-28.md)
+- **Rust** `frontier` [Since 1.98 a derived PartialOrd beside a derived Ord calls your fields' cmp, so a field whose two orders disagree flipped 9 < 10 to false](entries/2026-10-30.md)
+- **C++** `perf-memory` [A string_view into a moved std::string survives if the string was long and breaks if it was short, because SSO bytes cannot be stolen](entries/2026-10-30.md)
+- **F#** `stdlib-ecosystem` [NET's PriorityQueue served ten equal-priority jobs as 0, 9, 8, ... 1, so a FIFO at one priority turns LIFO after the first](entries/2026-10-30.md)
+- **TypeScript** `type-system` [A const type parameter makes object properties readonly but copies your constraint's mutability onto arrays, and before 5.3 one string[] erased every literal](entries/2026-10-30.md)
 
 Also in this entry:
 
-- **The functional angle** - only a .NET delegate has function equality, and F# 11 just fixed which ones
-- **The security angle** - the bound you did not choose is a denial of service in Rust and a read past the end in C++
-- **FAQ**
+- **The functional angle** - no standard heap is FIFO for ties, so arrival order has to become part of the key, and that key is state
+- **The security angle** - a BTreeSet denylist built with collect() blocked 1, 2 and 20, and let 10 and 100 through
 
 ## Specials
 
