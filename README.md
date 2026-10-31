@@ -16,29 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**243 tips across 37 days** (2026-08-28 to 2026-10-30).
+**247 tips across 38 days** (2026-08-28 to 2026-10-31).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 63 | 11 | 17 | 17 | 10 | 8 |
-| C++ | 63 | 13 | 19 | 11 | 10 | 10 |
-| F# | 54 | 7 | 15 | 12 | 14 | 6 |
-| TypeScript | 63 | 10 | 17 | 17 | 7 | 12 |
+| Rust | 64 | 12 | 17 | 17 | 10 | 8 |
+| C++ | 64 | 13 | 19 | 11 | 10 | 11 |
+| F# | 55 | 7 | 15 | 12 | 15 | 6 |
+| TypeScript | 64 | 10 | 17 | 18 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-30)
+## Today's highlights (2026-10-31)
 
-- **Rust** `frontier` [Since 1.98 a derived PartialOrd beside a derived Ord calls your fields' cmp, so a field whose two orders disagree flipped 9 < 10 to false](entries/2026-10-30.md)
-- **C++** `perf-memory` [A string_view into a moved std::string survives if the string was long and breaks if it was short, because SSO bytes cannot be stolen](entries/2026-10-30.md)
-- **F#** `stdlib-ecosystem` [NET's PriorityQueue served ten equal-priority jobs as 0, 9, 8, ... 1, so a FIFO at one priority turns LIFO after the first](entries/2026-10-30.md)
-- **TypeScript** `type-system` [A const type parameter makes object properties readonly but copies your constraint's mutability onto arrays, and before 5.3 one string[] erased every literal](entries/2026-10-30.md)
+- **Rust** `type-system` [impl Future hides the type but not Send, so one Rc held across an await breaks a caller you never touched](entries/2026-10-31.md)
+- **C++** `frontier` [C++26 reflection sees only what the calling code may access, so a generic serializer drops private fields without a word](entries/2026-10-31.md)
+- **F#** `perf-memory` [InlineIfLambda changed nothing for a one-line lambda and saved 27% on a five-line one, and in Debug it does nothing at all](entries/2026-10-31.md)
+- **TypeScript** `stdlib-ecosystem` [RegExp.escape turns foo into \x66oo, and that first hex escape is what keeps it safe to paste anywhere](entries/2026-10-31.md)
 
 Also in this entry:
 
-- **The functional angle** - no standard heap is FIFO for ties, so arrival order has to become part of the key, and that key is state
-- **The security angle** - a BTreeSet denylist built with collect() blocked 1, 2 and 20, and let 10 and 100 through
+- **The functional angle** - passing a function is free only where the compiler can see its body, and each language decides that differently
+- **The security angle** - an escape function is a promise about where its output gets pasted, and .NET's does not cover a character class
 
 ## Specials
 
