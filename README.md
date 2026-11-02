@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**251 tips across 39 days** (2026-08-28 to 2026-11-02).
+**255 tips across 39 days** (2026-08-28 to 2026-11-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 65 | 12 | 17 | 17 | 11 | 8 |
-| C++ | 65 | 14 | 19 | 11 | 10 | 11 |
-| F# | 56 | 7 | 15 | 12 | 15 | 7 |
-| TypeScript | 65 | 10 | 18 | 18 | 7 | 12 |
+| Rust | 66 | 12 | 17 | 18 | 11 | 8 |
+| C++ | 66 | 14 | 20 | 11 | 10 | 11 |
+| F# | 57 | 8 | 15 | 12 | 15 | 7 |
+| TypeScript | 66 | 11 | 18 | 18 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -31,9 +31,13 @@ Do your own fact-checks before you rely on any claim.
 ## Today's highlights (2026-11-02)
 
 - **Rust** `perf-memory` [collect::<Rc<[T]>>() allocates once only when the iterator knows its exact length, and a filter goes through a Vec that peaks at 2.5x](entries/2026-11-02.md)
+- **Rust** `stdlib-ecosystem` [uom stores every quantity in SI and serializes a bare number, so a file written in pound-force seconds reads back as newton seconds without a complaint](entries/2026-11-02.md)
 - **C++** `type-system` [A double template argument is compared by identity, not by ==, so amplifier<0.0> and amplifier<-0.0> are two types, and a NaN matches only a NaN with the same bits](entries/2026-11-02.md)
+- **C++** `idiom` [A strong unit type with an operator double() refuses = and still converts into another unit through parentheses](entries/2026-11-02.md)
 - **F#** `frontier` [raise caught drops the throw site inside task { } and keeps it inside async { }, and F# 11's preview finally accepts reraise () in both](entries/2026-11-02.md)
+- **F#** `type-system` [Units of measure stop at the file, so a writer in float<lbf s> and a reader in float<N s> agree on {"impulse":1}](entries/2026-11-02.md)
 - **TypeScript** `idiom` [template.replace("{name}", display_name) expands $&, $` and $' inside display_name, and only a function replacement is literal](entries/2026-11-02.md)
+- **TypeScript** `type-system` [A branded number loses its brand at the first +, and the cast you add to restore it also accepts a pound-force value](entries/2026-11-02.md)
 
 Also in this entry:
 
@@ -44,6 +48,7 @@ Also in this entry:
 
 One topic compared across all four languages, outside the daily rotation. Each link opens part 1.
 
+- [small bugs that exploded](entries/2026-11-02-extra-1-of-12.md) (2026-11-02, 12 parts) - a number that crossed a file without its unit
 - [functional programming](entries/2026-10-27-extra-1-of-12.md) (2026-10-27, 12 parts) - absence and failure as values
 - [timestamps](entries/2026-10-21-extra-1-of-13.md) (2026-10-21, 13 parts) - how Jan 31 plus one month becomes four different days
 - [float to integer](entries/2026-10-20-extra.md) (2026-10-20) - four ways to lose a cent
