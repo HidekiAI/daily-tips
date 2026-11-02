@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**267 tips across 39 days** (2026-08-28 to 2026-11-02).
+**271 tips across 39 days** (2026-08-28 to 2026-11-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 69 | 12 | 19 | 19 | 11 | 8 |
-| C++ | 69 | 15 | 22 | 11 | 10 | 11 |
-| F# | 60 | 8 | 16 | 14 | 15 | 7 |
-| TypeScript | 69 | 11 | 21 | 18 | 7 | 12 |
+| Rust | 70 | 12 | 19 | 20 | 11 | 8 |
+| C++ | 70 | 15 | 23 | 11 | 10 | 11 |
+| F# | 61 | 8 | 16 | 15 | 15 | 7 |
+| TypeScript | 70 | 11 | 22 | 18 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -35,21 +35,25 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `idiom` [as i16 keeps running on 32767 where the Ariane 5 code raised, and nothing records the clamp](entries/2026-11-02.md)
 - **Rust** `idiom` [east.atan2(north) and north.atan2(east) agree at 45 degrees, so a test on the diagonal cannot tell a heading from its mirror image](entries/2026-11-02.md)
 - **Rust** `stdlib-ecosystem` [An mpsc channel keeps every event sent before you start receiving, so the first touchdown you read can be the leg-deploy transient](entries/2026-11-02.md)
+- **Rust** `stdlib-ecosystem` [RefCell turns a second update during the window into a refusal or a panic, never into damaged data](entries/2026-11-02.md)
 - **C++** `type-system` [A double template argument is compared by identity, not by ==, so amplifier<0.0> and amplifier<-0.0> are two types, and a NaN matches only a NaN with the same bits](entries/2026-11-02.md)
 - **C++** `idiom` [A strong unit type with an operator double() refuses = and still converts into another unit through parentheses](entries/2026-11-02.md)
 - **C++** `type-system` [An out-of-range static_cast<int16_t> left Apple clang holding an int16_t of 40000 that is not greater than 32767](entries/2026-11-02.md)
 - **C++** `idiom` [A writer and a reader built from the same byte order pass every round-trip test, and read the spec's 1 as 16777216](entries/2026-11-02.md)
 - **C++** `idiom` [The predicate form of condition_variable::wait is a latch, so a flag set before you wait counts as the event you were waiting for](entries/2026-11-02.md)
+- **C++** `idiom` [std::recursive_mutex lets the second call attempt in while the invariant is broken, and the state looks right again afterwards](entries/2026-11-02.md)
 - **F#** `frontier` [raise caught drops the throw site inside task { } and keeps it inside async { }, and F# 11's preview finally accepts reraise () in both](entries/2026-11-02.md)
 - **F#** `type-system` [Units of measure stop at the file, so a writer in float<lbf s> and a reader in float<N s> agree on {"impulse":1}](entries/2026-11-02.md)
 - **F#** `stdlib-ecosystem` [int16 infinity is -1, because .NET 10 saturates to int first and then keeps the low 16 bits](entries/2026-11-02.md)
 - **F#** `idiom` [A transposed grid.[col, row] passes on the identity matrix and on any symmetric fixture](entries/2026-11-02.md)
 - **F#** `stdlib-ecosystem` [Event drops a trigger that nobody heard, and MailboxProcessor keeps a post sent before it started](entries/2026-11-02.md)
+- **F#** `stdlib-ecosystem` [A Dictionary written from 8 threads threw corrupted its state only after losing most of 1,600,008 entries](entries/2026-11-02.md)
 - **TypeScript** `idiom` [template.replace("{name}", display_name) expands $&, $` and $' inside display_name, and only a function replacement is literal](entries/2026-11-02.md)
 - **TypeScript** `type-system` [A branded number loses its brand at the first +, and the cast you add to restore it also accepts a pound-force value](entries/2026-11-02.md)
 - **TypeScript** `idiom` [The range guard before an Int16Array store lets NaN through, and the store turns it into 0](entries/2026-11-02.md)
 - **TypeScript** `idiom` [A mock checked with callCount() === 1 passes when the code calls it with the opposite sign](entries/2026-11-02.md)
 - **TypeScript** `idiom` [A resolved Promise answers every later await at once, so a touchdown promise resolved by the transient lands the descent loop at 40 m](entries/2026-11-02.md)
+- **TypeScript** `idiom` [One thread does not mean one update at a time, because every await is a window the next message walks into](entries/2026-11-02.md)
 
 Also in this entry:
 
