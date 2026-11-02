@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**275 tips across 39 days** (2026-08-28 to 2026-11-02).
+**279 tips across 39 days** (2026-08-28 to 2026-11-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 71 | 12 | 20 | 20 | 11 | 8 |
-| C++ | 71 | 15 | 24 | 11 | 10 | 11 |
-| F# | 62 | 8 | 17 | 15 | 15 | 7 |
-| TypeScript | 71 | 11 | 23 | 18 | 7 | 12 |
+| Rust | 72 | 12 | 20 | 21 | 11 | 8 |
+| C++ | 72 | 15 | 25 | 11 | 10 | 11 |
+| F# | 63 | 8 | 17 | 16 | 15 | 7 |
+| TypeScript | 72 | 11 | 23 | 19 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -37,6 +37,7 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `stdlib-ecosystem` [An mpsc channel keeps every event sent before you start receiving, so the first touchdown you read can be the leg-deploy transient](entries/2026-11-02.md)
 - **Rust** `stdlib-ecosystem` [RefCell turns a second update during the window into a refusal or a panic, never into damaged data](entries/2026-11-02.md)
 - **Rust** `idiom` [map[&key] panics on a missing entry, and the unwrap_or_default() you write to avoid the panic is the FDIV digit](entries/2026-11-02.md)
+- **Rust** `stdlib-ecosystem` [Write::write may take only part of its input and report it only in the returned count, and write_all is the call that refuses](entries/2026-11-02.md)
 - **C++** `type-system` [A double template argument is compared by identity, not by ==, so amplifier<0.0> and amplifier<-0.0> are two types, and a NaN matches only a NaN with the same bits](entries/2026-11-02.md)
 - **C++** `idiom` [A strong unit type with an operator double() refuses = and still converts into another unit through parentheses](entries/2026-11-02.md)
 - **C++** `type-system` [An out-of-range static_cast<int16_t> left Apple clang holding an int16_t of 40000 that is not greater than 32767](entries/2026-11-02.md)
@@ -44,6 +45,7 @@ Do your own fact-checks before you rely on any claim.
 - **C++** `idiom` [The predicate form of condition_variable::wait is a latch, so a flag set before you wait counts as the event you were waiting for](entries/2026-11-02.md)
 - **C++** `idiom` [std::recursive_mutex lets the second call attempt in while the invariant is broken, and the state looks right again afterwards](entries/2026-11-02.md)
 - **C++** `idiom` [Reading a missing key with std::map::operator[] inserts a 0, so the dropped entry now exists and says zero](entries/2026-11-02.md)
+- **C++** `idiom` [snprintf cuts a row to fit and returns the length it wanted, and neither compiler warns when only the data is too long](entries/2026-11-02.md)
 - **F#** `frontier` [raise caught drops the throw site inside task { } and keeps it inside async { }, and F# 11's preview finally accepts reraise () in both](entries/2026-11-02.md)
 - **F#** `type-system` [Units of measure stop at the file, so a writer in float<lbf s> and a reader in float<N s> agree on {"impulse":1}](entries/2026-11-02.md)
 - **F#** `stdlib-ecosystem` [int16 infinity is -1, because .NET 10 saturates to int first and then keeps the low 16 bits](entries/2026-11-02.md)
@@ -51,6 +53,7 @@ Do your own fact-checks before you rely on any claim.
 - **F#** `stdlib-ecosystem` [Event drops a trigger that nobody heard, and MailboxProcessor keeps a post sent before it started](entries/2026-11-02.md)
 - **F#** `stdlib-ecosystem` [A Dictionary written from 8 threads threw corrupted its state only after losing most of 1,600,008 entries](entries/2026-11-02.md)
 - **F#** `idiom` [A table made with Array2D.zeroCreate cannot tell a dropped entry from a real 0, and an option table can](entries/2026-11-02.md)
+- **F#** `stdlib-ecosystem` [Seq.truncate 65536 keeps the first 65,536 rows of 70,000 without a word, and Seq.take is the version that refuses](entries/2026-11-02.md)
 - **TypeScript** `idiom` [template.replace("{name}", display_name) expands $&, $` and $' inside display_name, and only a function replacement is literal](entries/2026-11-02.md)
 - **TypeScript** `type-system` [A branded number loses its brand at the first +, and the cast you add to restore it also accepts a pound-force value](entries/2026-11-02.md)
 - **TypeScript** `idiom` [The range guard before an Int16Array store lets NaN through, and the store turns it into 0](entries/2026-11-02.md)
@@ -58,6 +61,7 @@ Do your own fact-checks before you rely on any claim.
 - **TypeScript** `idiom` [A resolved Promise answers every later await at once, so a touchdown promise resolved by the transient lands the descent loop at 40 m](entries/2026-11-02.md)
 - **TypeScript** `idiom` [One thread does not mean one update at a time, because every await is a window the next message walks into](entries/2026-11-02.md)
 - **TypeScript** `idiom` [A Record<string, number> lookup of a missing key is typed number and is undefined, and ?? 0 turns it into the FDIV digit](entries/2026-11-02.md)
+- **TypeScript** `stdlib-ecosystem` [TextEncoder.encodeInto fills what fits and reports the rest only in its result object](entries/2026-11-02.md)
 
 Also in this entry:
 
