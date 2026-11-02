@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**259 tips across 39 days** (2026-08-28 to 2026-11-02).
+**263 tips across 39 days** (2026-08-28 to 2026-11-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 67 | 12 | 18 | 18 | 11 | 8 |
-| C++ | 67 | 15 | 20 | 11 | 10 | 11 |
-| F# | 58 | 8 | 15 | 13 | 15 | 7 |
-| TypeScript | 67 | 11 | 19 | 18 | 7 | 12 |
+| Rust | 68 | 12 | 19 | 18 | 11 | 8 |
+| C++ | 68 | 15 | 21 | 11 | 10 | 11 |
+| F# | 59 | 8 | 16 | 13 | 15 | 7 |
+| TypeScript | 68 | 11 | 20 | 18 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -33,15 +33,19 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `perf-memory` [collect::<Rc<[T]>>() allocates once only when the iterator knows its exact length, and a filter goes through a Vec that peaks at 2.5x](entries/2026-11-02.md)
 - **Rust** `stdlib-ecosystem` [uom stores every quantity in SI and serializes a bare number, so a file written in pound-force seconds reads back as newton seconds without a complaint](entries/2026-11-02.md)
 - **Rust** `idiom` [as i16 keeps running on 32767 where the Ariane 5 code raised, and nothing records the clamp](entries/2026-11-02.md)
+- **Rust** `idiom` [east.atan2(north) and north.atan2(east) agree at 45 degrees, so a test on the diagonal cannot tell a heading from its mirror image](entries/2026-11-02.md)
 - **C++** `type-system` [A double template argument is compared by identity, not by ==, so amplifier<0.0> and amplifier<-0.0> are two types, and a NaN matches only a NaN with the same bits](entries/2026-11-02.md)
 - **C++** `idiom` [A strong unit type with an operator double() refuses = and still converts into another unit through parentheses](entries/2026-11-02.md)
 - **C++** `type-system` [An out-of-range static_cast<int16_t> left Apple clang holding an int16_t of 40000 that is not greater than 32767](entries/2026-11-02.md)
+- **C++** `idiom` [A writer and a reader built from the same byte order pass every round-trip test, and read the spec's 1 as 16777216](entries/2026-11-02.md)
 - **F#** `frontier` [raise caught drops the throw site inside task { } and keeps it inside async { }, and F# 11's preview finally accepts reraise () in both](entries/2026-11-02.md)
 - **F#** `type-system` [Units of measure stop at the file, so a writer in float<lbf s> and a reader in float<N s> agree on {"impulse":1}](entries/2026-11-02.md)
 - **F#** `stdlib-ecosystem` [int16 infinity is -1, because .NET 10 saturates to int first and then keeps the low 16 bits](entries/2026-11-02.md)
+- **F#** `idiom` [A transposed grid.[col, row] passes on the identity matrix and on any symmetric fixture](entries/2026-11-02.md)
 - **TypeScript** `idiom` [template.replace("{name}", display_name) expands $&, $` and $' inside display_name, and only a function replacement is literal](entries/2026-11-02.md)
 - **TypeScript** `type-system` [A branded number loses its brand at the first +, and the cast you add to restore it also accepts a pound-force value](entries/2026-11-02.md)
 - **TypeScript** `idiom` [The range guard before an Int16Array store lets NaN through, and the store turns it into 0](entries/2026-11-02.md)
+- **TypeScript** `idiom` [A mock checked with callCount() === 1 passes when the code calls it with the opposite sign](entries/2026-11-02.md)
 
 Also in this entry:
 
