@@ -16,29 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**247 tips across 38 days** (2026-08-28 to 2026-10-31).
+**251 tips across 39 days** (2026-08-28 to 2026-11-02).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 64 | 12 | 17 | 17 | 10 | 8 |
-| C++ | 64 | 13 | 19 | 11 | 10 | 11 |
-| F# | 55 | 7 | 15 | 12 | 15 | 6 |
-| TypeScript | 64 | 10 | 17 | 18 | 7 | 12 |
+| Rust | 65 | 12 | 17 | 17 | 11 | 8 |
+| C++ | 65 | 14 | 19 | 11 | 10 | 11 |
+| F# | 56 | 7 | 15 | 12 | 15 | 7 |
+| TypeScript | 65 | 10 | 18 | 18 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-10-31)
+## Today's highlights (2026-11-02)
 
-- **Rust** `type-system` [impl Future hides the type but not Send, so one Rc held across an await breaks a caller you never touched](entries/2026-10-31.md)
-- **C++** `frontier` [C++26 reflection sees only what the calling code may access, so a generic serializer drops private fields without a word](entries/2026-10-31.md)
-- **F#** `perf-memory` [InlineIfLambda changed nothing for a one-line lambda and saved 27% on a five-line one, and in Debug it does nothing at all](entries/2026-10-31.md)
-- **TypeScript** `stdlib-ecosystem` [RegExp.escape turns foo into \x66oo, and that first hex escape is what keeps it safe to paste anywhere](entries/2026-10-31.md)
+- **Rust** `perf-memory` [collect::<Rc<[T]>>() allocates once only when the iterator knows its exact length, and a filter goes through a Vec that peaks at 2.5x](entries/2026-11-02.md)
+- **C++** `type-system` [A double template argument is compared by identity, not by ==, so amplifier<0.0> and amplifier<-0.0> are two types, and a NaN matches only a NaN with the same bits](entries/2026-11-02.md)
+- **F#** `frontier` [raise caught drops the throw site inside task { } and keeps it inside async { }, and F# 11's preview finally accepts reraise () in both](entries/2026-11-02.md)
+- **TypeScript** `idiom` [template.replace("{name}", display_name) expands $&, $` and $' inside display_name, and only a function replacement is literal](entries/2026-11-02.md)
 
 Also in this entry:
 
-- **The functional angle** - passing a function is free only where the compiler can see its body, and each language decides that differently
-- **The security angle** - an escape function is a promise about where its output gets pasted, and .NET's does not cover a character class
+- **The functional angle** - an error value keeps where it was made, and an exception keeps where it was last thrown
+- **The security angle** - a replacement string is a template, so a chosen name can erase itself from an audit line
 
 ## Specials
 
