@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**295 tips across 40 days** (2026-08-28 to 2026-11-03).
+**299 tips across 40 days** (2026-08-28 to 2026-11-03).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 76 | 12 | 23 | 21 | 11 | 9 |
-| C++ | 76 | 15 | 27 | 13 | 10 | 11 |
-| F# | 67 | 10 | 18 | 16 | 16 | 7 |
-| TypeScript | 76 | 14 | 24 | 19 | 7 | 12 |
+| Rust | 77 | 13 | 23 | 21 | 11 | 9 |
+| C++ | 77 | 15 | 27 | 14 | 10 | 11 |
+| F# | 68 | 10 | 19 | 16 | 16 | 7 |
+| TypeScript | 77 | 15 | 24 | 19 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -34,18 +34,22 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `idiom` [unreachable_code flags the statement after a duplicated return, and says nothing when the early exit sits behind if SKIP_SIGNATURE](entries/2026-11-03.md)
 - **Rust** `idiom` [Result<bool, E>::is_ok() is true for a password that did not match, and Clippy's pedantic lint rewrites if let Ok(_) into exactly that](entries/2026-11-03.md)
 - **Rust** `idiom` [Clippy's wildcard_enum_match_arm catches _ => on an enum, and not on a (state, event) tuple](entries/2026-11-03.md)
+- **Rust** `type-system` [A const generic field count turns 21 against 20 into E0308 wherever both sides share the type, and try_from is where it meets the data](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::inplace_vector throws bad_alloc when it is full, although nothing was allocated, and only GCC 16 ships it](entries/2026-11-03.md)
 - **C++** `idiom` [-Wall catches goto fail only by its indentation; add braces and GCC 16 and clang 22 both go silent](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [if (verify_password(pw)) on a std::expected<bool, E> tests that the call ran, and no compiler warns that the verdict was false](entries/2026-11-03.md)
 - **C++** `idiom` [default: turns off -Wswitch for the next state you add, and -Wswitch-enum is the warning that ignores the default](entries/2026-11-03.md)
+- **C++** `stdlib-ecosystem` [std::span::operator[] past the end returned a garbage size at -O2, -O0 aborted, and at() exists only from C++26](entries/2026-11-03.md)
 - **F#** `perf-memory` [readings[1..] copies the rest of the array on every call, so head-and-rest recursion over an array allocated 8 MB for 2,000 numbers](entries/2026-11-03.md)
 - **F#** `idiom` [FS0026 flags an arm after _, and says nothing when the duplicate hides behind a when guard](entries/2026-11-03.md)
 - **F#** `type-system` [Result.isOk (Ok false) is true, and only a match on the values makes the compiler name Ok (false) as the case you forgot](entries/2026-11-03.md)
 - **F#** `type-system` [A match on the event alone is complete and never looks at the state, and the pair match's FS0025 names only one missing pair](entries/2026-11-03.md)
+- **F#** `idiom` [Seq.zip pairs 21 criteria with 20 inputs as 20 pairs and says nothing, while Array.zip refuses](entries/2026-11-03.md)
 - **TypeScript** `type-system` [NoInfer<T> stops the fallback voting for T, but with an inline array literal it changed nothing and the typo compiled](entries/2026-11-03.md)
 - **TypeScript** `type-system` [tsc --strict reports unreachable code only to the editor, and allowUnreachableCode false catches if (true) but not an as const flag](entries/2026-11-03.md)
 - **TypeScript** `idiom` [TS2801 catches an un-awaited Promise<boolean> in a condition, and says nothing when the code reads .ok instead of .matched](entries/2026-11-03.md)
 - **TypeScript** `type-system` [A complete Record of template-literal pair keys names every pair a new state needs, and Partial with ?? state turns all of them into stay put](entries/2026-11-03.md)
+- **TypeScript** `type-system` [A 20-element tuple type refuses inputs[20] written as a literal, and accepts inputs[criterion.field_index] from the content](entries/2026-11-03.md)
 
 Also in this entry:
 
