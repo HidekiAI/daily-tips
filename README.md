@@ -39,7 +39,7 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `stdlib-ecosystem` [set_read_timeout(Some(Duration::ZERO)) is an error, because one layer down a zero timeout means never time out](entries/2026-11-03.md)
 - **Rust** `type-system` [A u32 field accepts the 41,797,550.16 bonus because it fits, and serde try_from is how the protocol's own limit becomes part of the parse](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::inplace_vector throws bad_alloc when it is full, although nothing was allocated, and only GCC 16 ships it](entries/2026-11-03.md)
-- **C++** `idiom` [-Wall catches goto fail only by its indentation; add braces and GCC 16 and clang 22 both go silent](entries/2026-11-03.md)
+- **C++** `idiom` [-Wall catches goto fail only by its indentation; add braces and GCC 16 and Debian clang 19 both go silent](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [if (verify_password(pw)) on a std::expected<bool, E> tests that the call ran, and no compiler warns that the verdict was false](entries/2026-11-03.md)
 - **C++** `idiom` [default: turns off -Wswitch for the next state you add, and -Wswitch-enum is the warning that ignores the default](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::span::operator[] past the end returned a garbage size at -O2, -O0 aborted, and at() exists only from C++26](entries/2026-11-03.md)
