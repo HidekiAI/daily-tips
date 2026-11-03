@@ -45,7 +45,7 @@ Do your own fact-checks before you rely on any claim.
 - **C++** `stdlib-ecosystem` [std::span::operator[] past the end returned a garbage size at -O2, -O0 aborted, and at() exists only from C++26](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::filesystem::remove returns false both when the folder was not there and when it refused a full one, and only the error_code tells them apart](entries/2026-11-03.md)
 - **C++** `perf-memory` [A smoothed round-trip time kept in std::chrono::milliseconds stops learning 7 ms short, because / 8 truncates](entries/2026-11-03.md)
-- **C++** `idiom` [std::stoul("-20") returns 18446744073709551596 with no exception, and narrowed to 32 bits that is the 42,949,672.76 ticket](entries/2026-11-03.md)
+- **C++** `idiom` [std::stoul("-20") returns 18446744073709551596 with no exception, and narrowed to 32 bits it gives the 42,949,672.76 figure on the New York ticket](entries/2026-11-03.md)
 - **F#** `perf-memory` [readings[1..] copies the rest of the array on every call, so head-and-rest recursion over an array allocated 8 MB for 2,000 numbers](entries/2026-11-03.md)
 - **F#** `idiom` [FS0026 flags an arm after _, and says nothing when the duplicate hides behind a when guard](entries/2026-11-03.md)
 - **F#** `type-system` [Result.isOk (Ok false) is true, and only a match on the values makes the compiler name Ok (false) as the case you forgot](entries/2026-11-03.md)
