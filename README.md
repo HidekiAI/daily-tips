@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**307 tips across 40 days** (2026-08-28 to 2026-11-03).
+**311 tips across 40 days** (2026-08-28 to 2026-11-03).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 79 | 13 | 23 | 23 | 11 | 9 |
-| C++ | 79 | 15 | 27 | 15 | 11 | 11 |
-| F# | 70 | 10 | 20 | 17 | 16 | 7 |
-| TypeScript | 79 | 15 | 25 | 20 | 7 | 12 |
+| Rust | 80 | 14 | 23 | 23 | 11 | 9 |
+| C++ | 80 | 15 | 28 | 15 | 11 | 11 |
+| F# | 71 | 10 | 20 | 18 | 16 | 7 |
+| TypeScript | 80 | 15 | 26 | 20 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -37,6 +37,7 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `type-system` [A const generic field count turns 21 against 20 into E0308 wherever both sides share the type, and try_from is where it meets the data](entries/2026-11-03.md)
 - **Rust** `stdlib-ecosystem` [fs::remove_dir is the emptiness check, done by the kernel in the same call, and a separate check followed by remove_dir_all deletes whatever arrived in between](entries/2026-11-03.md)
 - **Rust** `stdlib-ecosystem` [set_read_timeout(Some(Duration::ZERO)) is an error, because one layer down a zero timeout means never time out](entries/2026-11-03.md)
+- **Rust** `type-system` [A u32 field accepts the 41,797,550.16 bonus because it fits, and serde try_from is how the protocol's own limit becomes part of the parse](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::inplace_vector throws bad_alloc when it is full, although nothing was allocated, and only GCC 16 ships it](entries/2026-11-03.md)
 - **C++** `idiom` [-Wall catches goto fail only by its indentation; add braces and GCC 16 and clang 22 both go silent](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [if (verify_password(pw)) on a std::expected<bool, E> tests that the call ran, and no compiler warns that the verdict was false](entries/2026-11-03.md)
@@ -44,6 +45,7 @@ Do your own fact-checks before you rely on any claim.
 - **C++** `stdlib-ecosystem` [std::span::operator[] past the end returned a garbage size at -O2, -O0 aborted, and at() exists only from C++26](entries/2026-11-03.md)
 - **C++** `stdlib-ecosystem` [std::filesystem::remove returns false both when the folder was not there and when it refused a full one, and only the error_code tells them apart](entries/2026-11-03.md)
 - **C++** `perf-memory` [A smoothed round-trip time kept in std::chrono::milliseconds stops learning 7 ms short, because / 8 truncates](entries/2026-11-03.md)
+- **C++** `idiom` [std::stoul("-20") returns 18446744073709551596 with no exception, and narrowed to 32 bits that is the 42,949,672.76 ticket](entries/2026-11-03.md)
 - **F#** `perf-memory` [readings[1..] copies the rest of the array on every call, so head-and-rest recursion over an array allocated 8 MB for 2,000 numbers](entries/2026-11-03.md)
 - **F#** `idiom` [FS0026 flags an arm after _, and says nothing when the duplicate hides behind a when guard](entries/2026-11-03.md)
 - **F#** `type-system` [Result.isOk (Ok false) is true, and only a match on the values makes the compiler name Ok (false) as the case you forgot](entries/2026-11-03.md)
@@ -51,6 +53,7 @@ Do your own fact-checks before you rely on any claim.
 - **F#** `idiom` [Seq.zip pairs 21 criteria with 20 inputs as 20 pairs and says nothing, while Array.zip refuses](entries/2026-11-03.md)
 - **F#** `idiom` [Directory.Delete(path, true) puts the destructive mode in a bare true, and computing it from an emptiness check rebuilds the 1809 shape](entries/2026-11-03.md)
 - **F#** `stdlib-ecosystem` [HttpClient.Timeout is one number for the client's whole life, 100 seconds by default, and it cannot be changed after the first request](entries/2026-11-03.md)
+- **F#** `stdlib-ecosystem` [[<Range(0, 9_999_999)>] on an int64 rejects 417,975.50 but throws OverflowException on 41,797,550.16](entries/2026-11-03.md)
 - **TypeScript** `type-system` [NoInfer<T> stops the fallback voting for T, but with an inline array literal it changed nothing and the typo compiled](entries/2026-11-03.md)
 - **TypeScript** `type-system` [tsc --strict reports unreachable code only to the editor, and allowUnreachableCode false catches if (true) but not an as const flag](entries/2026-11-03.md)
 - **TypeScript** `idiom` [TS2801 catches an un-awaited Promise<boolean> in a condition, and says nothing when the code reads .ok instead of .matched](entries/2026-11-03.md)
@@ -58,6 +61,7 @@ Do your own fact-checks before you rely on any claim.
 - **TypeScript** `type-system` [A 20-element tuple type refuses inputs[20] written as a literal, and accepts inputs[criterion.field_index] from the content](entries/2026-11-03.md)
 - **TypeScript** `stdlib-ecosystem` [Node's fs.rmSync(dir, { recursive: true, force: true }) is the usual cleanup line, and force also hides there was nothing to delete](entries/2026-11-03.md)
 - **TypeScript** `idiom` [A 300 ms client timeout against a 680 ms server gave up three times, and the server still did all three requests](entries/2026-11-03.md)
+- **TypeScript** `idiom` [-20 >>> 0 is 4294967276 and 4179755016 | 0 is -115212280, so the usual integer coercions turn a refund into a jackpot and a jackpot into a debt](entries/2026-11-03.md)
 
 Also in this entry:
 
@@ -68,7 +72,7 @@ Also in this entry:
 
 One topic compared across all four languages, outside the daily rotation. Each link opens part 1.
 
-- [small bugs that exploded](entries/2026-11-02-extra-1-of-13.md) (2026-11-02, 13 parts) - a number that crossed a file without its unit
+- [small bugs that exploded](entries/2026-11-02-extra-1-of-14.md) (2026-11-02, 14 parts) - a number that crossed a file without its unit
 - [functional programming](entries/2026-10-27-extra-1-of-12.md) (2026-10-27, 12 parts) - absence and failure as values
 - [timestamps](entries/2026-10-21-extra-1-of-13.md) (2026-10-21, 13 parts) - how Jan 31 plus one month becomes four different days
 - [float to integer](entries/2026-10-20-extra.md) (2026-10-20) - four ways to lose a cent
