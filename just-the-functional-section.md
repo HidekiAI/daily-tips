@@ -3376,6 +3376,35 @@ This sample compiled and ran; it is a sketch of the type, not DigiCert's design.
 F# is the baseline because a single-case union with a private constructor is the idiom its programmers reach for first. The question for all four rows is the same: who is allowed to build the value, and does the constructor check the prefix?
 
 
+## [2026-11-04-extra-9-of-15.md](entries/2026-11-04-extra-9-of-15.md)
+
+### The functional angle: a generator is a function from state to state, and its cycle structure is a property you can compute
+
+Draws on all four tips. Each generator here is a pure function `state -> (value, state)`. For a pure function over a finite state space the whole behavior is the functional graph: cycles with trees leading into them. A cycle length, a number of unreachable states and a linear relation are all facts about that graph, and a short program finds them exactly.
+
+```fsharp
+// F#: the cycle length of any pure generator step function over a small state, by walking until a state repeats
+let fn_cycle_length (fn_step: uint32 -> uint32) (start_state: uint32) : int =
+    let seen: System.Collections.Generic.HashSet<uint32> = System.Collections.Generic.HashSet<uint32>()
+    let mutable mut_state: uint32 = start_state
+    while seen.Add mut_state do
+        mut_state <- fn_step mut_state
+    seen.Count
+printfn "%d" (fn_cycle_length (fun state -> (state * 9301u + 49297u) % 233280u) 1u)
+```
+
+This sample ran and printed `233280`, the same as the TypeScript tip.
+
+| Language | Generator | Exact fact found by enumeration |
+| --- | --- | --- |
+| Rust | SM64 `random_u16` | 65,114 of 65,536 values reached, 422 never |
+| C++ | RANDU recurrence | one linear relation, 15 planes |
+| F# | ANSI C sample LCG | low k bits have period 2^k |
+| TypeScript | the 233,280 snippet | one ring of 233,280, parity alternates |
+
+F# is the baseline because the graph-walking sample above is what its immutable style makes shortest. What is the largest generator state you could enumerate this way before it took too long, and what does that say about 32-bit seeds from part 4?
+
+
 ## [2026-11-04.md](entries/2026-11-04.md)
 
 ### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
