@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**375 tips across 41 days** (2026-08-28 to 2026-11-04).
+**379 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 96 | 17 | 26 | 32 | 12 | 9 |
-| C++ | 96 | 15 | 38 | 20 | 11 | 12 |
-| F# | 87 | 13 | 27 | 24 | 16 | 7 |
-| TypeScript | 96 | 15 | 35 | 27 | 7 | 12 |
+| Rust | 97 | 17 | 26 | 33 | 12 | 9 |
+| C++ | 97 | 15 | 39 | 20 | 11 | 12 |
+| F# | 88 | 13 | 28 | 24 | 16 | 7 |
+| TypeScript | 97 | 15 | 36 | 27 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -45,6 +45,7 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `stdlib-ecosystem` [with a self-chosen Q = d * P, one 30-byte output of a Dual_EC-style generator gave 32,766 candidates, and a second output chose the right state, which then predicted the next five outputs](entries/2026-11-04.md)
 - **Rust** `idiom` [2,000 simulated devices with a 14-bit boot state produced 226 moduli that share a prime with another, and plain `gcd` factored all of them](entries/2026-11-04.md)
 - **Rust** `idiom` [a uniform shuffle of 20 songs by 5 artists put some artist twice in a row in 96.2 percent of shuffles, and the spread shuffle in 0.3 percent](entries/2026-11-04.md)
+- **Rust** `stdlib-ecosystem` [proptest found a failing midpoint, saved it to a regression file, and on the next run failed with `successes: 0` before generating anything new](entries/2026-11-04.md)
 - **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [mt19937's 10000th output is fixed by the standard and uniform_int_distribution is not, so the same seed rolls 3 5 6 2 5 on libstdc++ and 4 5 3 5 5 on libc++](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`generate_canonical` is specified to return a value below 1, and three library versions do three different things at 4294967168](entries/2026-11-04.md)
@@ -60,6 +61,7 @@ Do your own fact-checks before you rely on any claim.
 - **C++** `idiom` [`std::random_device` takes a token naming its source; on GCC 16.2 `default`, `/dev/urandom`, `/dev/random` and `getentropy` work, `rdrand`, `rdseed` and `mt19937` throw, and libc++ accepts only file paths](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`getrandom(2)` with `GRND_NONBLOCK` returned all 32 bytes at once on a 7.0 kernel, and `entropy_avail` and `poolsize` both read 256](entries/2026-11-04.md)
 - **C++** `idiom` [in 100 fair coin flips the longest run was 6.97 on average, and a run of 6 or more occurred in 80.6 percent of sequences](entries/2026-11-04.md)
+- **C++** `idiom` [Catch2 prints `Randomness seeded to: 1453372891`, and `--rng-seed 12345` replays the identical failing inputs](entries/2026-11-04.md)
 - **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
 - **F#** `type-system` [Random(42) still runs the .NET Framework algorithm, the 21 a bug report called a typo included, while the docs tell you not to rely on it](entries/2026-11-04.md)
 - **F#** `idiom` [`abs Int32.MinValue` throws, `x % n` keeps the sign of `x`, and 41,584 of 100,000 string hashes were negative modulo 6](entries/2026-11-04.md)
@@ -75,6 +77,7 @@ Do your own fact-checks before you rely on any claim.
 - **F#** `stdlib-ecosystem` [`RandomNumberGenerator.Create()` is `RandomNumberGeneratorImplementation`, and on Linux the process maps `libcrypto.so.3` and `libssl.so.3`](entries/2026-11-04.md)
 - **F#** `stdlib-ecosystem` [two 1024-bit moduli that share a 512-bit prime fall to `BigInteger.GreatestCommonDivisor` in 662 microseconds](entries/2026-11-04.md)
 - **F#** `idiom` [100 uniformly random points in 100 cells left 36.63 cells empty on average, and 0 of 20,000 trials filled every cell](entries/2026-11-04.md)
+- **F#** `idiom` [FsCheck's default `int` generator produced values no larger than 50 in 1,000 samples, so the overflow property passed, and a full-range generator falsified it after 26 tests with a replay seed](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Effect 4's Random.nextIntBetween(1, 7) can return 7 and Effect 3's never did, and Math.random repeats only under a V8 flag](entries/2026-11-04.md)
 - **TypeScript** `idiom` [`Math.round(Math.random() * (n - 1))` gives the two end values half the probability of the rest](entries/2026-11-04.md)
@@ -90,6 +93,7 @@ Do your own fact-checks before you rely on any claim.
 - **TypeScript** `idiom` [Node 26.13 bundles OpenSSL 3.5.9 and reports FIPS off, and the OpenSSL command line in the same image lists three generators and no Dual EC](entries/2026-11-04.md)
 - **TypeScript** `idiom` [finding weak moduli among 400 took 466 ms pairwise and 7 ms with a product tree, and both found the same 10](entries/2026-11-04.md)
 - **TypeScript** `idiom` [after four or more heads in a row, the next flip was heads 50.01 percent of the time over 2.5 million such streaks](entries/2026-11-04.md)
+- **TypeScript** `idiom` [fast-check failed after 30 runs with seed 895575536 and the counterexample `[29, 2147483619]`, and replaying with that seed gave the identical counterexample](entries/2026-11-04.md)
 
 Also in this entry:
 

@@ -3325,6 +3325,32 @@ This sample ran. With no jitter and an offset of one half it prints `[0.125; 0.3
 Rust is the baseline because it carries both distributions in a dozen lines. If you had to describe your "random" feature to a user as a distribution, would you say uniform?
 
 
+## [2026-11-04-extra-15-of-15.md](entries/2026-11-04-extra-15-of-15.md)
+
+### The functional angle: a random test is a pure function of its seed
+
+Draws on all four tips. A property test is `run(seed, property) -> Pass | Fail(counterexample)`. Given the seed, it is a pure function, and everything useful (replay, regression files, shrinking) follows from treating the seed as the one input that carries the randomness.
+
+```fsharp
+// F#: a replayable random test is a function of its seed, with no hidden state
+let fn_find_counterexample (seed: int) (property: int -> int -> bool) : (int * int) option =
+    let rng: System.Random = System.Random(seed)
+    Seq.init 1000 (fun _ -> rng.Next(), rng.Next()) |> Seq.tryFind (fun (low, high) -> not (property low high))
+printfn "%A %A" (fn_find_counterexample 7 (fun low high -> low <= high)) (fn_find_counterexample 7 (fun low high -> low <= high))
+```
+
+This sample ran and printed the same pair twice (equal inputs, equal result).
+
+| Language | What prints the seed | What replays it | Shrinks |
+| --- | --- | --- | --- |
+| Rust (proptest) | a `cc` line in a file | the file, automatically | yes (stopped early here) |
+| C++ (Catch2) | `Randomness seeded to: N` | `--rng-seed N` | no |
+| F# (FsCheck) | `(a,b)` and a step seed in the message | `Replay` in the config | not with `Arb.fromGen` |
+| TypeScript (fast-check) | `seed` in the result | `{ seed }` | yes (28 shrinks) |
+
+TypeScript is the baseline because it was the only one of four that gave seed, small counterexample and edge-reaching generator in one run. Which of the four would you want in the log at three in the morning?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
