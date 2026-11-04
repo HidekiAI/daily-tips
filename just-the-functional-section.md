@@ -3321,6 +3321,31 @@ fn fn_worker_streams(mut_parent: &mut StdRng, worker_count: usize) -> Vec<StdRng
 C++ is the baseline for this angle because the standard states the rule and the language does not enforce it. Which of these four would your code review catch first?
 
 
+## [2026-11-04-extra-7-of-15.md](entries/2026-11-04-extra-7-of-15.md)
+
+### The functional angle: if the generator is state, a copy of the world is a copy of the state
+
+Draws on the F# tip and all four measurements. Fork, snapshot and checkpoint copy the world. A pure generator makes the copy explicit: `let child = parent`. An impure one makes it implicit, and the implicit copy is the hazard.
+
+```fsharp
+// F#: splitting the stream is one visible line, instead of an invisible copy
+let fn_split (state: XorShiftState) : XorShiftState * XorShiftState =
+    let _, next_state = fn_next state
+    { word = next_state.word ^^^ 0xD1B54A32D192ED03UL }, next_state // the child is not the parent
+```
+
+This sample ran (child and parent states differ), but it is a sketch of the splitting idea, not a vetted splittable generator. Real splittable generators (SplitMix, for one) have proofs of independence, and Rust's `rand_chacha` offers streams.
+
+| Language | What a copy of the world does to the generator | Measured | The fix is |
+| --- | --- | --- | --- |
+| Rust | `ThreadRng` repeats after fork in 0.9, partly in 0.8 | 300 of 300 vs 63 of 300 draws | `ThreadRng::reseed` after fork |
+| C++ | the engine is plain memory, copied exactly | same 3421126067 in both | seed in the child from `random_device` |
+| F# | a value copy is exact; `Random` has no copy | equal draws; no member | split explicitly |
+| TypeScript | the runtime reseeds its own, not yours | 3 identical build-time values | draw after restore, not before |
+
+Rust is the baseline: the only row where a maintainer decided, and wrote down in a changelog, to leave the duty with the caller. Which would you want from a library, the warning or the guard?
+
+
 ## [2026-11-04.md](entries/2026-11-04.md)
 
 ### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
