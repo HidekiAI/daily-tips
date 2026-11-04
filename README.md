@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**327 tips across 41 days** (2026-08-28 to 2026-11-04).
+**331 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 84 | 14 | 23 | 26 | 12 | 9 |
-| C++ | 84 | 15 | 29 | 17 | 11 | 12 |
-| F# | 75 | 12 | 21 | 19 | 16 | 7 |
-| TypeScript | 84 | 15 | 28 | 22 | 7 | 12 |
+| Rust | 85 | 14 | 23 | 27 | 12 | 9 |
+| C++ | 85 | 15 | 29 | 18 | 11 | 12 |
+| F# | 76 | 12 | 22 | 19 | 16 | 7 |
+| TypeScript | 85 | 15 | 29 | 22 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -33,15 +33,19 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `perf-memory` [A forgotten Vec::drain(2..4) loses six of eight elements, the tail included, while a forgotten String::drain removes nothing](entries/2026-11-04.md)
 - **Rust** `stdlib-ecosystem` [rand 0.9 kept StdRng's raw stream and changed what random_range(1..=6) returns, so a seed-42 test written on 0.8 rolls [1, 4, 2, 4, 6] instead of [4, 2, 4, 6, 3]](entries/2026-11-04.md)
 - **Rust** `stdlib-ecosystem` [`(raw as f32) / (u32::MAX as f32)` is exactly 1.0 for 128 of the 2^32 inputs, and `raw % n` favors the low residues by an exact, countable amount](entries/2026-11-04.md)
+- **Rust** `stdlib-ecosystem` [`sort_by` with a random `Ordering` compiles, does not panic up to 20 items and is biased at 5, and panics from 21](entries/2026-11-04.md)
 - **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [mt19937's 10000th output is fixed by the standard and uniform_int_distribution is not, so the same seed rolls 3 5 6 2 5 on libstdc++ and 4 5 3 5 5 on libc++](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`generate_canonical` is specified to return a value below 1, and three library versions do three different things at 4294967168](entries/2026-11-04.md)
+- **C++** `stdlib-ecosystem` [`std::sort` with a coin-flip comparator is undefined behavior, and GCC 16.2 aborted with "double free or corruption" while libc++ returned a biased order](entries/2026-11-04.md)
 - **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
 - **F#** `type-system` [Random(42) still runs the .NET Framework algorithm, the 21 a bug report called a typo included, while the docs tell you not to rely on it](entries/2026-11-04.md)
 - **F#** `idiom` [`abs Int32.MinValue` throws, `x % n` keeps the sign of `x`, and 41,584 of 100,000 string hashes were negative modulo 6](entries/2026-11-04.md)
+- **F#** `idiom` [the poker shuffle, "swap each position with any position", turns 3 cards into 27 equally likely paths over 6 orderings, so some orderings come up 5 times in 27 and some 4](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Effect 4's Random.nextIntBetween(1, 7) can return 7 and Effect 3's never did, and Math.random repeats only under a V8 flag](entries/2026-11-04.md)
 - **TypeScript** `idiom` [`Math.round(Math.random() * (n - 1))` gives the two end values half the probability of the rest](entries/2026-11-04.md)
+- **TypeScript** `idiom` [`array.sort(() => 0.5 - Math.random())` on Node 26 gives item 0 the first or second slot 49 percent of the time, and the answer depends on the engine](entries/2026-11-04.md)
 
 Also in this entry:
 
