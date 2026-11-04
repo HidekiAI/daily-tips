@@ -3180,3 +3180,53 @@ Hanging thread: if a language gives you a view that is free, but one that can da
 
 ---
 
+
+## [2026-11-04.md](entries/2026-11-04.md)
+
+### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
+
+Draws on the F# tip (SRTP and extensions) and the C++ tip (binding a callable at compile time). The shape is ad-hoc polymorphism: a generic function calls `shout(value)`, and someone else supplies `shout` for a type neither of them owns.
+
+```rust
+// Rust 1.99.1: an impl is global to the crate; where it is written does not matter
+fn shout_all<T: loud::Shout>(value: &T) -> String { value.shout() }
+mod loud { pub trait Shout { fn shout(&self) -> String; } }
+mod hidden_impls { // private, written after shout_all, never imported anywhere
+    impl crate::loud::Shout for String {
+        fn shout(&self) -> String { format!("{}!", self.to_uppercase()) }
+    }
+}
+// shout_all(&String::from("hello")) -> HELLO!
+```
+
+```cpp
+// C++20, GCC 16.2 and Debian clang 19.1.7: the same unqualified call, looked up twice
+template <class T> std::string shout_all(const T& value) { return shout(value); }
+namespace loud {
+    struct Reading { double degrees; };
+    std::string shout(const Reading& reading) { return std::to_string(reading.degrees) + " C!"; }
+}
+std::string shout(const std::string& text) { return text + "!"; } // after the template, global namespace
+// shout_all(loud::Reading{21.5})     -> 21.500000 C!   (argument-dependent lookup at instantiation)
+// shout_all(std::string("hello"))    -> GCC: "'shout' was not declared in this scope, and no declarations
+//    were found by argument-dependent lookup at the point of instantiation"; clang: "neither visible in the
+//    template definition nor found by argument-dependent lookup"
+```
+
+```fsharp
+// F# 11 RC 3 with --langversion:preview: the extension must be in scope where shout is defined
+type System.String with
+    member text.Shout() = text.ToUpperInvariant() + "!"
+let inline shout (value: ^T) = (^T : (member Shout : unit -> string) value)
+// shout "hello" -> HELLO!  ; move the extension below shout, or open it only at the call: FS0001
+```
+
+| Language | Where the extension must be | What it costs |
+| --- | --- | --- |
+| F# 11 preview | in scope at the `inline` function's definition | measured: a call-site `open` or a later declaration gives FS0001; the helper's file must open the extension |
+| Rust | anywhere in the crate (impls are global), but only your own trait or your own type (orphan rule) | measured: the impl in a private module written later worked; for a foreign trait and a foreign type you need a newtype |
+| C++ | an associated namespace of the argument (found at instantiation), or declared before the template | measured: `shout(const std::string&)` in the global namespace is invisible to the template, because ADL for `std::string` searches `std` only |
+| TypeScript | not expressible: types are erased, so no call is chosen by type | you pass the implementation as a value (a dictionary of functions), which is the hand-written form of what the other three do |
+
+F# and C++ fail on the same shape for different reasons: F# records the extensions in scope when the constraint is asserted in the function body, and C++ splits the lookup in two and gives the second half only to ADL. Rust avoids the scope question altogether, and pays with the orphan rule. Which of the costs in the third column would you rather your library's users discover the hard way?
+

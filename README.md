@@ -16,61 +16,30 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**315 tips across 40 days** (2026-08-28 to 2026-11-03).
+**319 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 81 | 14 | 23 | 24 | 11 | 9 |
-| C++ | 81 | 15 | 29 | 15 | 11 | 11 |
-| F# | 72 | 10 | 20 | 19 | 16 | 7 |
-| TypeScript | 81 | 15 | 27 | 20 | 7 | 12 |
+| Rust | 82 | 14 | 23 | 24 | 12 | 9 |
+| C++ | 82 | 15 | 29 | 15 | 11 | 12 |
+| F# | 73 | 11 | 20 | 19 | 16 | 7 |
+| TypeScript | 82 | 15 | 27 | 21 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-11-03)
+## Today's highlights (2026-11-04)
 
-- **Rust** `frontier` [Vec::into_parts hands you a pointer even for an empty Vec, and it is 0x8, which is not null and not something free accepts](entries/2026-11-03.md)
-- **Rust** `idiom` [unreachable_code flags the statement after a duplicated return, and says nothing when the early exit sits behind if SKIP_SIGNATURE](entries/2026-11-03.md)
-- **Rust** `idiom` [Result<bool, E>::is_ok() is true for a password that did not match, and Clippy's pedantic lint rewrites if let Ok(_) into exactly that](entries/2026-11-03.md)
-- **Rust** `idiom` [Clippy's wildcard_enum_match_arm catches _ => on an enum, and not on a (state, event) tuple](entries/2026-11-03.md)
-- **Rust** `type-system` [A const generic field count turns 21 against 20 into E0308 wherever both sides share the type, and try_from is where it meets the data](entries/2026-11-03.md)
-- **Rust** `stdlib-ecosystem` [fs::remove_dir is the emptiness check, done by the kernel in the same call, and a separate check followed by remove_dir_all deletes whatever arrived in between](entries/2026-11-03.md)
-- **Rust** `stdlib-ecosystem` [set_read_timeout(Some(Duration::ZERO)) is an error, because one layer down a zero timeout means never time out](entries/2026-11-03.md)
-- **Rust** `type-system` [A u32 field accepts the 41,797,550.16 bonus because it fits, and serde try_from is how the protocol's own limit becomes part of the parse](entries/2026-11-03.md)
-- **Rust** `stdlib-ecosystem` [HashMap iteration order changes from one run to the next on purpose, so a test cannot learn it](entries/2026-11-03.md)
-- **C++** `stdlib-ecosystem` [std::inplace_vector throws bad_alloc when it is full, although nothing was allocated, and only GCC 16 ships it](entries/2026-11-03.md)
-- **C++** `idiom` [-Wall catches goto fail only by its indentation; add braces and GCC 16 and Debian clang 19 both go silent](entries/2026-11-03.md)
-- **C++** `stdlib-ecosystem` [if (verify_password(pw)) on a std::expected<bool, E> tests that the call ran, and no compiler warns that the verdict was false](entries/2026-11-03.md)
-- **C++** `idiom` [default: turns off -Wswitch for the next state you add, and -Wswitch-enum is the warning that ignores the default](entries/2026-11-03.md)
-- **C++** `stdlib-ecosystem` [std::span::operator[] past the end returned a garbage size at -O2, -O0 aborted, and at() exists only from C++26](entries/2026-11-03.md)
-- **C++** `stdlib-ecosystem` [std::filesystem::remove returns false both when the folder was not there and when it refused a full one, and only the error_code tells them apart](entries/2026-11-03.md)
-- **C++** `perf-memory` [A smoothed round-trip time kept in std::chrono::milliseconds stops learning 7 ms short, because / 8 truncates](entries/2026-11-03.md)
-- **C++** `idiom` [std::stoul("-20") returns 18446744073709551596 with no exception, and narrowed to 32 bits it gives the 42,949,672.76 figure on the New York ticket](entries/2026-11-03.md)
-- **C++** `idiom` [A std::set of pointers iterates in creation order in a fresh process, until the allocator reuses a freed block](entries/2026-11-03.md)
-- **F#** `perf-memory` [readings[1..] copies the rest of the array on every call, so head-and-rest recursion over an array allocated 8 MB for 2,000 numbers](entries/2026-11-03.md)
-- **F#** `idiom` [FS0026 flags an arm after _, and says nothing when the duplicate hides behind a when guard](entries/2026-11-03.md)
-- **F#** `type-system` [Result.isOk (Ok false) is true, and only a match on the values makes the compiler name Ok (false) as the case you forgot](entries/2026-11-03.md)
-- **F#** `type-system` [A match on the event alone is complete and never looks at the state, and the pair match's FS0025 names only one missing pair](entries/2026-11-03.md)
-- **F#** `idiom` [Seq.zip pairs 21 criteria with 20 inputs as 20 pairs and says nothing, while Array.zip refuses](entries/2026-11-03.md)
-- **F#** `idiom` [Directory.Delete(path, true) puts the destructive mode in a bare true, and computing it from an emptiness check rebuilds the 1809 shape](entries/2026-11-03.md)
-- **F#** `stdlib-ecosystem` [HttpClient.Timeout is one number for the client's whole life, 100 seconds by default, and it cannot be changed after the first request](entries/2026-11-03.md)
-- **F#** `stdlib-ecosystem` [[<Range(0, 9_999_999)>] on an int64 rejects 417,975.50 but throws OverflowException on 41,797,550.16](entries/2026-11-03.md)
-- **F#** `stdlib-ecosystem` [A Dictionary enumerates in insertion order until a Remove, and then the next Add takes the freed slot](entries/2026-11-03.md)
-- **TypeScript** `type-system` [NoInfer<T> stops the fallback voting for T, but with an inline array literal it changed nothing and the typo compiled](entries/2026-11-03.md)
-- **TypeScript** `type-system` [tsc --strict reports unreachable code only to the editor, and allowUnreachableCode false catches if (true) but not an as const flag](entries/2026-11-03.md)
-- **TypeScript** `idiom` [TS2801 catches an un-awaited Promise<boolean> in a condition, and says nothing when the code reads .ok instead of .matched](entries/2026-11-03.md)
-- **TypeScript** `type-system` [A complete Record of template-literal pair keys names every pair a new state needs, and Partial with ?? state turns all of them into stay put](entries/2026-11-03.md)
-- **TypeScript** `type-system` [A 20-element tuple type refuses inputs[20] written as a literal, and accepts inputs[criterion.field_index] from the content](entries/2026-11-03.md)
-- **TypeScript** `stdlib-ecosystem` [Node's fs.rmSync(dir, { recursive: true, force: true }) is the usual cleanup line, and force also hides there was nothing to delete](entries/2026-11-03.md)
-- **TypeScript** `idiom` [A 300 ms client timeout against a 680 ms server gave up three times, and the server still did all three requests](entries/2026-11-03.md)
-- **TypeScript** `idiom` [-20 >>> 0 is 4294967276 and 4179755016 | 0 is -115212280, so the usual integer coercions turn a refund into a jackpot and a jackpot into a debt](entries/2026-11-03.md)
-- **TypeScript** `idiom` [Object keys keep insertion order except the integer-like ones, which jump to the front in numeric order](entries/2026-11-03.md)
+- **Rust** `perf-memory` [A forgotten Vec::drain(2..4) loses six of eight elements, the tail included, while a forgotten String::drain removes nothing](entries/2026-11-04.md)
+- **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
+- **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
+- **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
 
 Also in this entry:
 
-- **The functional angle** - head-and-rest recursion is cheap only where the rest is a view, and only F# lists give it to you without asking
-- **The security angle** - a fixed capacity and a dangling-but-valid pointer turn a count somebody else chose into a write or a free you did not intend
+- **The functional angle** - a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
+- **The security angle** - a lenient decoder makes two different strings mean the same bytes, and anything keyed on the string can be walked around
+- **FAQ** - 4 follow-up questions
 
 ## Specials
 
