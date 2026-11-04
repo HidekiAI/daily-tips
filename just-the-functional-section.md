@@ -3346,6 +3346,36 @@ This sample ran (child and parent states differ), but it is a sketch of the spli
 Rust is the baseline: the only row where a maintainer decided, and wrote down in a changelog, to leave the duty with the caller. Which would you want from a library, the warning or the guard?
 
 
+## [2026-11-04-extra-8-of-15.md](entries/2026-11-04-extra-8-of-15.md)
+
+### The functional angle: an identifier is a value in a type, and its width is the type's job
+
+Draws on all four tips. The DigiCert failure was a value of the right content in the wrong format; the birthday failures are a value of the right format in too small a space. A type can carry both facts: the prefix rule and the bit width.
+
+```rust
+// Rust: make "has the required prefix" and "is wide enough" unrepresentable to get wrong
+pub struct DomainValidationToken(String); // always starts with '_', always 150+ bits of randomness behind it
+impl DomainValidationToken {
+    pub fn new(random_bytes: [u8; 24]) -> Self {
+        let hex_digits: String = random_bytes.iter().map(|byte| format!("{:02x}", byte)).collect();
+        DomainValidationToken(format!("_{}", hex_digits))
+    }
+    pub fn as_host_label(&self) -> &str { &self.0 }
+}
+```
+
+This sample compiled and ran; it is a sketch of the type, not DigiCert's design. 24 bytes is 192 bits.
+
+| Language | How a type could carry the rule | What it cannot say |
+| --- | --- | --- |
+| Rust | a newtype with a private constructor (above) | that the 24 bytes were random |
+| C++ | a class with a private constructor | the same |
+| F# | a single-case union with a private constructor | the same |
+| TypeScript | a branded string type | the brand is erased at runtime |
+
+F# is the baseline because a single-case union with a private constructor is the idiom its programmers reach for first. The question for all four rows is the same: who is allowed to build the value, and does the constructor check the prefix?
+
+
 ## [2026-11-04.md](entries/2026-11-04.md)
 
 ### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
