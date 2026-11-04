@@ -3272,6 +3272,33 @@ Draws on the Rust tip and the 2007 slides. A pure function `output = f(state, P,
 Rust is the baseline because it is the row where the hidden parameter is a number you can hold. If the parameter were visible and derived, would the attack still be a possibility?
 
 
+## [2026-11-04-extra-13-of-15.md](entries/2026-11-04-extra-13-of-15.md)
+
+### The functional angle: a key is a function of the entropy given to it, and the type should carry that provenance
+
+Draws on all four tips. The Heninger failure was `generate_key(state) -> (p, q)` called with a state that was the same on every device. In a pure view, the function is deterministic and the weakness is in the argument. A type that only a secure source could construct would have forced the choice at the call site:
+
+```rust
+// Rust: a seed type that cannot be built from a constant, only from the operating system
+pub struct SecureSeed([u8; 32]);
+impl SecureSeed {
+    pub fn from_os() -> Result<SecureSeed, getrandom::Error> { let mut seed = [0u8; 32]; getrandom::fill(&mut seed)?; Ok(SecureSeed(seed)) }
+}
+// fn generate_rsa_key(seed: SecureSeed) -> RsaKey   // a boot-time call must handle the error, not skip it
+```
+
+This sketch was not compiled; `getrandom::fill` is the crate's documented call, which I did not check in this session. The point is the shape: failing to get entropy becomes a value the caller must handle.
+
+| Language | What the call site can do at first boot | Measured |
+| --- | --- | --- |
+| Rust | take a `Result` from the OS source (sketch above) | 226 of 2,000 toy devices factored when it did not |
+| C++ | call `getrandom` with `GRND_NONBLOCK` and look at the result | 32 bytes returned at once here |
+| F# | call `RandomNumberGenerator` (which does not report starvation) | 662 us to factor a shared prime |
+| TypeScript | call `crypto` (the same) | 7 ms to screen 400 moduli |
+
+C++ is the baseline because it is the only row where the call that can refuse is a one-line system call. Which of your first-boot paths can fail loudly?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
