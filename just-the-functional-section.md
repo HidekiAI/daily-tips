@@ -3297,6 +3297,30 @@ fn fn_make_session_key(mut_rng: &mut impl CryptoRng) -> u64 { mut_rng.next_u64()
 Rust is the baseline here because it is the only row whose compiler can refuse a mistake. Is a marker trait the right shape, or only the first step of one that says where the seed came from too?
 
 
+## [2026-11-04-extra-6-of-15.md](entries/2026-11-04-extra-6-of-15.md)
+
+### The functional angle: share nothing, and make the stream a value passed in
+
+Draws on all four tips. The race exists because a generator is hidden mutable state. The three languages' answers differ in who removes the mutation: the type system (Rust), a fresh object per thread (TypeScript) or a lock (everything else).
+
+```rust
+// Rust: pass the generator explicitly and split it, so no two workers share state
+use rand::{rngs::StdRng, Rng, SeedableRng};
+fn fn_worker_streams(mut_parent: &mut StdRng, worker_count: usize) -> Vec<StdRng> {
+    (0..worker_count).map(|_| StdRng::from_rng(&mut *mut_parent)).collect()
+}
+```
+
+| Language | How shared mutable state is stopped | Measured result of ignoring it |
+| --- | --- | --- |
+| Rust | `ThreadRng` is `!Send`, a compile error | 4 identical streams when the same seed is passed to each worker |
+| C++ | nothing; a data race is undefined behavior | total differs every run, 8 to 14 TSan reports on GCC |
+| F# | documentation only ("not thread safe") | 4,442 and 10.7 million zeros in 16 million draws (two runs, seeded) |
+| TypeScript | each worker has its own generator | all 4 workers identical under `--random-seed` |
+
+C++ is the baseline for this angle because the standard states the rule and the language does not enforce it. Which of these four would your code review catch first?
+
+
 ## [2026-11-04.md](entries/2026-11-04.md)
 
 ### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own

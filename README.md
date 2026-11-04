@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**339 tips across 41 days** (2026-08-28 to 2026-11-04).
+**343 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 87 | 15 | 23 | 28 | 12 | 9 |
-| C++ | 87 | 15 | 31 | 18 | 11 | 12 |
-| F# | 78 | 12 | 22 | 21 | 16 | 7 |
-| TypeScript | 87 | 15 | 29 | 24 | 7 | 12 |
+| Rust | 88 | 16 | 23 | 28 | 12 | 9 |
+| C++ | 88 | 15 | 32 | 18 | 11 | 12 |
+| F# | 79 | 12 | 23 | 21 | 16 | 7 |
+| TypeScript | 88 | 15 | 29 | 25 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -36,24 +36,28 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `stdlib-ecosystem` [`sort_by` with a random `Ordering` compiles, does not panic up to 20 items and is biased at 5, and panics from 21](entries/2026-11-04.md)
 - **Rust** `stdlib-ecosystem` [a 256-bit key from `StdRng::seed_from_u64(process_id)` is one of 32,768, and one key is enough to recover the pid in 10 milliseconds](entries/2026-11-04.md)
 - **Rust** `type-system` [`SmallRng` is not `CryptoRng`, so passing it to a key function fails at compile time, and the secure `StdRng` ran at about 1,300 MB/s against `SmallRng`'s 9,100](entries/2026-11-04.md)
+- **Rust** `type-system` [`rand::rng()` cannot be moved to another thread, and four workers seeded with 42 each draw `572990626`](entries/2026-11-04.md)
 - **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [mt19937's 10000th output is fixed by the standard and uniform_int_distribution is not, so the same seed rolls 3 5 6 2 5 on libstdc++ and 4 5 3 5 5 on libc++](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`generate_canonical` is specified to return a value below 1, and three library versions do three different things at 4294967168](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`std::sort` with a coin-flip comparator is undefined behavior, and GCC 16.2 aborted with "double free or corruption" while libc++ returned a biased order](entries/2026-11-04.md)
 - **C++** `idiom` [two `std::mt19937` engines seeded with `time(nullptr)` in the same second produce the same stream, and `random_device::entropy()` printed 32 on both libraries](entries/2026-11-04.md)
 - **C++** `idiom` [`std::random_device` took about 21 ns a word on libstdc++ and 264 to 288 ns on libc++, against 1.2 to 1.3 and 2.8 to 3.0 for `mt19937`, and the standard has no secure generator at all](entries/2026-11-04.md)
+- **C++** `idiom` [four threads sharing one `std::mt19937` with no lock drew a different total every run, and ThreadSanitizer on GCC 16.2 reported the data race on every run](entries/2026-11-04.md)
 - **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
 - **F#** `type-system` [Random(42) still runs the .NET Framework algorithm, the 21 a bug report called a typo included, while the docs tell you not to rely on it](entries/2026-11-04.md)
 - **F#** `idiom` [`abs Int32.MinValue` throws, `x % n` keeps the sign of `x`, and 41,584 of 100,000 string hashes were negative modulo 6](entries/2026-11-04.md)
 - **F#** `idiom` [the poker shuffle, "swap each position with any position", turns 3 cards into 27 equally likely paths over 6 orderings, so some orderings come up 5 times in 27 and some 4](entries/2026-11-04.md)
 - **F#** `stdlib-ecosystem` [`Random(1)` and `Random(-1)` give the same stream, `Random(Int32.MinValue)` equals `Random(Int32.MaxValue)`, and two `Random(Environment.TickCount)` agree](entries/2026-11-04.md)
 - **F#** `stdlib-ecosystem` [`RandomNumberGenerator.Fill` ran at 9,300 to 10,400 MB/s on .NET 10, level with `Random.Shared` and thirty times faster than `Random(1).NextBytes` at about 310](entries/2026-11-04.md)
+- **F#** `idiom` [eight threads sharing one `Random(42)` produced zeros, 4,442 in one run and 10.7 million of 16 million in another, and a shared `Random()` and `Random.Shared` produced none](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Effect 4's Random.nextIntBetween(1, 7) can return 7 and Effect 3's never did, and Math.random repeats only under a V8 flag](entries/2026-11-04.md)
 - **TypeScript** `idiom` [`Math.round(Math.random() * (n - 1))` gives the two end values half the probability of the rest](entries/2026-11-04.md)
 - **TypeScript** `idiom` [`array.sort(() => 0.5 - Math.random())` on Node 26 gives item 0 the first or second slot 49 percent of the time, and the answer depends on the engine](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Effect's `Random.withSeed(1)` and `withSeed(4294967297)` give the same stream, and so do `1.5` and `1.9`](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [`crypto.getRandomValues` filled bytes at about 8,500 MB/s on Node 26, forty-five times a byte-at-a-time `Math.random` loop at about 190 MB/s](entries/2026-11-04.md)
+- **TypeScript** `stdlib-ecosystem` [four Node workers' first `Math.random()` all differ by default, and all equal `0.6159659788862542` under `--random-seed=42`](entries/2026-11-04.md)
 
 Also in this entry:
 
