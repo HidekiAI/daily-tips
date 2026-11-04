@@ -3276,6 +3276,27 @@ fn fn_stream_from_seed(seed_value: u16) -> StdRng {
 F# is the baseline because it is the only one whose seed type is a plain `int` and still collides inside its own range. If the domain of a seed function is the thing that matters, which of your seed parameters has a type narrower than the state it feeds?
 
 
+## [2026-11-04-extra-5-of-15.md](entries/2026-11-04-extra-5-of-15.md)
+
+### The functional angle: the secure and the fast generator are the same function with a different environment, and the type should say which
+
+Draws on the Rust tip and the Android story. A function that makes a key takes a generator as a parameter (an effect passed in, not reached for). That makes the choice visible at the call site and testable, but only if the type says which kind it needs. Only Rust did.
+
+```rust
+// Rust: the capability is in the signature
+fn fn_make_session_key(mut_rng: &mut impl CryptoRng) -> u64 { mut_rng.next_u64() }
+```
+
+| Language | Does the signature distinguish secure from fast? | Measured throughput of the secure option | What the call site must do |
+| --- | --- | --- | --- |
+| Rust | yes: `CryptoRng` is a bound, a compile error otherwise | `StdRng` 1,240 MB/s, `OsRng` 262 | pass a `CryptoRng`; the seed is still unchecked |
+| C++ | no; `random_device` and `mt19937` are both just callables | `random_device` 21 or 264 ns/word | name the source in review |
+| F# | no; `RandomNumberGenerator` is a different class, not a type bound | 10,437 MB/s | choose the class |
+| TypeScript | no; `crypto` and `Math.random` are different functions | 8,639 MB/s | choose the function |
+
+Rust is the baseline here because it is the only row whose compiler can refuse a mistake. Is a marker trait the right shape, or only the first step of one that says where the seed came from too?
+
+
 ## [2026-11-04.md](entries/2026-11-04.md)
 
 ### The functional angle: a generic call finds its extension in a different place in each language, and F# and C++ both stop at the definition for a type you do not own
