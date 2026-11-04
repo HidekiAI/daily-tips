@@ -3224,6 +3224,32 @@ let candidates: Vec<u64> = (0..65536u64).map(|low_bits| high_bits | low_bits).fi
 F# is the baseline: the output function is the identity, which is the plainest version of the idea, and it is also the one .NET shipped for years. Which of your generators have an output function you could invert?
 
 
+## [2026-11-04-extra-11-of-15.md](entries/2026-11-04-extra-11-of-15.md)
+
+### The functional angle: a test is a function from outcomes to a verdict, and its error rates are part of its type
+
+Draws on the Rust and C++ tips. `chi_squared_test: counts -> Pass | Fail` has a false-positive rate (the significance level) and a false-negative rate that depends on the bias. Writing the test as a pure function over counts makes both measurable by simulation, which is what the tips do.
+
+```fsharp
+// F#: the test as a pure function over counts, so its error rates can be measured by feeding it generated counts
+let fn_chi_squared_fails (critical_value: float) (slot_counts: int[]) : bool =
+    let expected: float = float (Array.sum slot_counts) / float slot_counts.Length
+    (slot_counts |> Array.sumBy (fun count -> (float count - expected) ** 2.0 / expected)) > critical_value
+printfn "%b" (fn_chi_squared_fails 52.192 (Array.create 38 263))
+```
+
+This sample ran and printed `false` (a perfectly flat wheel passes).
+
+| Language | The test's measured behavior | What it shows |
+| --- | --- | --- |
+| Rust | 4.88 percent false alarms; shutdown after 426 windows | a healthy system trips its own alarm |
+| C++ | 7 to 99.55 percent detection from 5 to 50 percent bias | a window of 10,000 sees large bias only |
+| F# | 97.9 percent against a byte modulo | a narrow source is caught at once |
+| TypeScript | clock steps 1 ms to 41 ns | the rule on seeds is about secrecy, not precision |
+
+F# is the baseline because a pure counts-to-verdict function is its default shape. If your acceptance test for a generator is a single call, what is its false-alarm rate?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
