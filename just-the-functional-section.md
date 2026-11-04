@@ -3203,6 +3203,27 @@ let first_roll = StdRng::seed_from_u64(42).random_range(1..=6_u32);    // 1 on 0
 F# is the baseline here because it is the only one whose seeded values survived the upgrades I measured. And it is the only one that says it might not. The other three are honest that the mapping can move. Which is worse for a long-lived replay format: a guarantee nobody made, or a change that is clearly documented and still lands without a compile error?
 
 
+## [2026-11-04-extra-10-of-15.md](entries/2026-11-04-extra-10-of-15.md)
+
+### The functional angle: an invertible output function is an exposed state
+
+Draws on all four tips. A generator is a pair of functions: a step `state -> state` and an output `state -> value`. If the output function is injective, the value is the state under another name. If it is "almost" injective (a truncation, a bijective tempering), a few outputs recover it. The measurements show where each of the four sits.
+
+```rust
+// Rust: the whole attack is one line: find states whose output equals the observation
+let candidates: Vec<u64> = (0..65536u64).map(|low_bits| high_bits | low_bits).filter(|state| fn_output_32(*state) == observed).collect();
+```
+
+| Language | Output function | Outputs needed to know the state | Measured |
+| --- | --- | --- | --- |
+| Rust | top 32 of a 48-bit state | 2 | 1 candidate of 65,536 |
+| C++ | invertible tempering of a 32-bit word | 624 | 1,000,000 of 1,000,000 predicted |
+| F# | the state word itself | 55 | 100,000 of 100,000 predicted |
+| TypeScript | a hash of a 32-bit state | 2 | 1 state of 2^32, 4 seconds |
+
+F# is the baseline: the output function is the identity, which is the plainest version of the idea, and it is also the one .NET shipped for years. Which of your generators have an output function you could invert?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
