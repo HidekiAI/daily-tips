@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**319 tips across 41 days** (2026-08-28 to 2026-11-04).
+**327 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 82 | 14 | 23 | 24 | 12 | 9 |
-| C++ | 82 | 15 | 29 | 15 | 11 | 12 |
-| F# | 73 | 11 | 20 | 19 | 16 | 7 |
-| TypeScript | 82 | 15 | 27 | 21 | 7 | 12 |
+| Rust | 84 | 14 | 23 | 26 | 12 | 9 |
+| C++ | 84 | 15 | 29 | 17 | 11 | 12 |
+| F# | 75 | 12 | 21 | 19 | 16 | 7 |
+| TypeScript | 84 | 15 | 28 | 22 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -31,9 +31,17 @@ Do your own fact-checks before you rely on any claim.
 ## Today's highlights (2026-11-04)
 
 - **Rust** `perf-memory` [A forgotten Vec::drain(2..4) loses six of eight elements, the tail included, while a forgotten String::drain removes nothing](entries/2026-11-04.md)
+- **Rust** `stdlib-ecosystem` [rand 0.9 kept StdRng's raw stream and changed what random_range(1..=6) returns, so a seed-42 test written on 0.8 rolls [1, 4, 2, 4, 6] instead of [4, 2, 4, 6, 3]](entries/2026-11-04.md)
+- **Rust** `stdlib-ecosystem` [`(raw as f32) / (u32::MAX as f32)` is exactly 1.0 for 128 of the 2^32 inputs, and `raw % n` favors the low residues by an exact, countable amount](entries/2026-11-04.md)
 - **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
+- **C++** `stdlib-ecosystem` [mt19937's 10000th output is fixed by the standard and uniform_int_distribution is not, so the same seed rolls 3 5 6 2 5 on libstdc++ and 4 5 3 5 5 on libc++](entries/2026-11-04.md)
+- **C++** `stdlib-ecosystem` [`generate_canonical` is specified to return a value below 1, and three library versions do three different things at 4294967168](entries/2026-11-04.md)
 - **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
+- **F#** `type-system` [Random(42) still runs the .NET Framework algorithm, the 21 a bug report called a typo included, while the docs tell you not to rely on it](entries/2026-11-04.md)
+- **F#** `idiom` [`abs Int32.MinValue` throws, `x % n` keeps the sign of `x`, and 41,584 of 100,000 string hashes were negative modulo 6](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
+- **TypeScript** `stdlib-ecosystem` [Effect 4's Random.nextIntBetween(1, 7) can return 7 and Effect 3's never did, and Math.random repeats only under a V8 flag](entries/2026-11-04.md)
+- **TypeScript** `idiom` [`Math.round(Math.random() * (n - 1))` gives the two end values half the probability of the rest](entries/2026-11-04.md)
 
 Also in this entry:
 
@@ -45,6 +53,7 @@ Also in this entry:
 
 One topic compared across all four languages, outside the daily rotation. Each link opens part 1.
 
+- [random numbers](entries/2026-11-04-extra-1-of-15.md) (2026-11-04, 15 parts) - a seed that promised more than the library kept
 - [small bugs that exploded](entries/2026-11-02-extra-1-of-15.md) (2026-11-02, 15 parts) - a number that crossed a file without its unit
 - [functional programming](entries/2026-10-27-extra-1-of-12.md) (2026-10-27, 12 parts) - absence and failure as values
 - [timestamps](entries/2026-10-21-extra-1-of-13.md) (2026-10-21, 13 parts) - how Jan 31 plus one month becomes four different days
