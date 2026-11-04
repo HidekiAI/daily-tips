@@ -16,14 +16,14 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**363 tips across 41 days** (2026-08-28 to 2026-11-04).
+**367 tips across 41 days** (2026-08-28 to 2026-11-04).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 93 | 17 | 24 | 31 | 12 | 9 |
-| C++ | 93 | 15 | 36 | 19 | 11 | 12 |
-| F# | 84 | 13 | 26 | 22 | 16 | 7 |
-| TypeScript | 93 | 15 | 32 | 27 | 7 | 12 |
+| Rust | 94 | 17 | 24 | 32 | 12 | 9 |
+| C++ | 94 | 15 | 37 | 19 | 11 | 12 |
+| F# | 85 | 13 | 26 | 23 | 16 | 7 |
+| TypeScript | 94 | 15 | 33 | 27 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
@@ -42,6 +42,7 @@ Do your own fact-checks before you rely on any claim.
 - **Rust** `type-system` [Super Mario 64's `random_u16` visits 65,114 of the 65,536 possible values and then repeats, and 422 values can never come out](entries/2026-11-04.md)
 - **Rust** `stdlib-ecosystem` [two consecutive 32-bit outputs of a 48-bit linear congruential generator leave exactly one candidate state of 65,536, and the next 1,000 outputs follow](entries/2026-11-04.md)
 - **Rust** `idiom` [a perfectly fair 38-slot wheel fails Nevada's 95 percent chi-squared test in 4.88 percent of windows, and play is disabled after about 426 windows](entries/2026-11-04.md)
+- **Rust** `stdlib-ecosystem` [with a self-chosen Q = d * P, one 30-byte output of a Dual_EC-style generator gave 32,766 candidates, and a second output chose the right state, which then predicted the next five outputs](entries/2026-11-04.md)
 - **C++** `frontier` [C++26 dropped std::nontype in March 2026, so function_ref binds a compile-time callable with std::cw and refuses the call move_only_function answers differently](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [mt19937's 10000th output is fixed by the standard and uniform_int_distribution is not, so the same seed rolls 3 5 6 2 5 on libstdc++ and 4 5 3 5 5 on libc++](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [`generate_canonical` is specified to return a value below 1, and three library versions do three different things at 4294967168](entries/2026-11-04.md)
@@ -54,6 +55,7 @@ Do your own fact-checks before you rely on any claim.
 - **C++** `idiom` [the 65539 multiplier makes every consecutive triple satisfy `x3 = 6*x2 - 9*x1 (mod 2^31)`, so ten million triples fell on exactly 15 planes](entries/2026-11-04.md)
 - **C++** `stdlib-ecosystem` [624 consecutive `std::mt19937` outputs reveal its whole state, and the next 1,000,000 outputs were predicted without one miss, on GCC 16.2 and libc++](entries/2026-11-04.md)
 - **C++** `idiom` [the same chi-squared test catches a slot that is 50 percent too likely in 99.55 percent of windows, and one that is 10 percent too likely in only 9.35 percent](entries/2026-11-04.md)
+- **C++** `idiom` [`std::random_device` takes a token naming its source; on GCC 16.2 `default`, `/dev/urandom`, `/dev/random` and `getentropy` work, `rdrand`, `rdseed` and `mt19937` throw, and libc++ accepts only file paths](entries/2026-11-04.md)
 - **F#** `type-system` [F# 11's preview lets an SRTP constraint use an extension member, but only one in scope where the inline function was written](entries/2026-11-04.md)
 - **F#** `type-system` [Random(42) still runs the .NET Framework algorithm, the 21 a bug report called a typo included, while the docs tell you not to rely on it](entries/2026-11-04.md)
 - **F#** `idiom` [`abs Int32.MinValue` throws, `x % n` keeps the sign of `x`, and 41,584 of 100,000 string hashes were negative modulo 6](entries/2026-11-04.md)
@@ -66,6 +68,7 @@ Do your own fact-checks before you rely on any claim.
 - **F#** `idiom` [the ANSI C sample generator's lowest k bits repeat with period exactly 2^k, so `rand() % 2` alternates and `rand() % 256` has period 256](entries/2026-11-04.md)
 - **F#** `idiom` [.NET's seeded `Random` is a subtractive generator whose `Next()` returns its raw words, so 55 outputs predicted the next 100,000 exactly](entries/2026-11-04.md)
 - **F#** `idiom` [a wheel built from one random byte `% 38` fails the same test in 97.9 percent of windows, while `GetInt32(38)` fails 4.25 percent, a fair wheel's rate](entries/2026-11-04.md)
+- **F#** `stdlib-ecosystem` [`RandomNumberGenerator.Create()` is `RandomNumberGeneratorImplementation`, and on Linux the process maps `libcrypto.so.3` and `libssl.so.3`](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Buffer.from(text, "base64") skips a * and trailing junk and still returns hello, while Uint8Array.fromBase64 throws, and only strict mode refuses aGVsbG9=](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Effect 4's Random.nextIntBetween(1, 7) can return 7 and Effect 3's never did, and Math.random repeats only under a V8 flag](entries/2026-11-04.md)
 - **TypeScript** `idiom` [`Math.round(Math.random() * (n - 1))` gives the two end values half the probability of the rest](entries/2026-11-04.md)
@@ -78,6 +81,7 @@ Do your own fact-checks before you rely on any claim.
 - **TypeScript** `idiom` [the snippet `seed = (seed * 9301 + 49297) % 233280` visits every one of its 233,280 values once, and its parity flips on all 1,000,000 of 1,000,000 steps](entries/2026-11-04.md)
 - **TypeScript** `idiom` [all 2^32 states of the popular `mulberry32` generator were tried in 4 seconds, one matched two observed outputs, and it predicted the third](entries/2026-11-04.md)
 - **TypeScript** `stdlib-ecosystem` [Nevada requires a time seed to be in "milliseconds or smaller" and "not viewable"; Node's clocks step by 1 ms, 41 microseconds and 41 nanoseconds](entries/2026-11-04.md)
+- **TypeScript** `idiom` [Node 26.13 bundles OpenSSL 3.5.9 and reports FIPS off, and the OpenSSL command line in the same image lists three generators and no Dual EC](entries/2026-11-04.md)
 
 Also in this entry:
 

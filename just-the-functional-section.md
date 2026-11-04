@@ -3250,6 +3250,28 @@ This sample ran and printed `false` (a perfectly flat wheel passes).
 F# is the baseline because a pure counts-to-verdict function is its default shape. If your acceptance test for a generator is a single call, what is its false-alarm rate?
 
 
+## [2026-11-04-extra-12-of-15.md](entries/2026-11-04-extra-12-of-15.md)
+
+### The functional angle: a standard's constants are inputs, and an unexplained input is a hidden parameter
+
+Draws on the Rust tip and the 2007 slides. A pure function `output = f(state, P, Q)` takes `Q` as an argument. A standard that fixes `Q` hides an argument, and the attack is a function of that hidden argument: `attack(e, output) -> candidate states`. Making `Q` an explicit, derived value (hash a public string to a point) removes the hidden parameter.
+
+```rust
+// Rust: the toy generator takes Q as a parameter; the attack function takes e as a parameter
+// fn fn_next_output(state: Scalar, point_p: ProjectivePoint, point_q: ProjectivePoint) -> (Scalar, [u8; 30])
+// fn fn_recover_state(secret_e: Scalar, first_output: [u8; 30], second_output: [u8; 30]) -> Option<Scalar>
+```
+
+| Language | Where the hidden choice lives | Measured |
+| --- | --- | --- |
+| Rust | the `Q` in the generator | 6 s to recover the state with `e` |
+| C++ | the token to `random_device` | four accepted tokens on one library, two on another |
+| F# | the OpenSSL under `RandomNumberGenerator` | `libcrypto.so.3` mapped |
+| TypeScript | the OpenSSL bundled with Node | 3.5.9, FIPS off |
+
+Rust is the baseline because it is the row where the hidden parameter is a number you can hold. If the parameter were visible and derived, would the attack still be a possibility?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
