@@ -3299,6 +3299,32 @@ This sketch was not compiled; `getrandom::fill` is the crate's documented call, 
 C++ is the baseline because it is the only row where the call that can refuse is a one-line system call. Which of your first-boot paths can fail loudly?
 
 
+## [2026-11-04-extra-14-of-15.md](entries/2026-11-04-extra-14-of-15.md)
+
+### The functional angle: a specification is a distribution, and "random" is not one
+
+Draws on the Rust tip and the Spotify post. A shuffle is a function from a playlist and a random source to a permutation. The uniform shuffle's distribution is uniform over all permutations. The spread shuffle's distribution is not: orders with adjacent same-artist songs have almost no probability. Both are pure functions given the random source, and the product question is which distribution to ship.
+
+```fsharp
+// F#: the spread shuffle's key idea as a pure function: each song gets a sort key from its artist's spacing, then sort by key
+let fn_spread_keys (song_count: int) (offset: float) (jitters: float list) : float list =
+    let spacing: float = 1.0 / float song_count
+    jitters |> List.scan (fun position jitter -> position + spacing * jitter) (offset * spacing) |> List.take song_count
+printfn "%A" (fn_spread_keys 4 0.5 [ 1.0; 1.0; 1.0; 1.0 ])
+```
+
+This sample ran. With no jitter and an offset of one half it prints `[0.125; 0.375; 0.625; 0.875]`.
+
+| Language | The measured gap between uniform and "looks random" | Number |
+| --- | --- | --- |
+| Rust | uniform shuffle vs spread shuffle, adjacent same artist | 96.2 percent vs 0.3 percent |
+| C++ | runs of 6 or more in 100 fair flips | 80.6 percent |
+| F# | empty cells when 100 points fall in 100 cells | 36.63 |
+| TypeScript | heads after four heads | 50.01 percent |
+
+Rust is the baseline because it carries both distributions in a dozen lines. If you had to describe your "random" feature to a user as a distribution, would you say uniform?
+
+
 ## [2026-11-04-extra-2-of-15.md](entries/2026-11-04-extra-2-of-15.md)
 
 ### The functional angle: a range is a total function only if you decide what happens at the edges
