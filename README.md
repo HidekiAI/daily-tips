@@ -16,29 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**383 tips across 42 days** (2026-08-28 to 2026-11-06).
+**387 tips across 43 days** (2026-08-28 to 2026-11-09).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 98 | 17 | 26 | 33 | 12 | 10 |
-| C++ | 98 | 16 | 39 | 20 | 11 | 12 |
-| F# | 89 | 13 | 28 | 24 | 17 | 7 |
-| TypeScript | 98 | 15 | 36 | 28 | 7 | 12 |
+| Rust | 99 | 17 | 26 | 33 | 13 | 10 |
+| C++ | 99 | 16 | 39 | 20 | 11 | 13 |
+| F# | 90 | 14 | 28 | 24 | 17 | 7 |
+| TypeScript | 99 | 15 | 37 | 28 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-11-06)
+## Today's highlights (2026-11-09)
 
-- **Rust** `frontier` [VecDeque::retain_back(3) keeps the last three, truncate(3) keeps the first three, and the name was changed after its FCP had closed](entries/2026-11-06.md)
-- **C++** `type-system` [{ sensor.reading } -> std::integral is false for an int member, because the constraint sees int&, and the overload it guarded is skipped without a word](entries/2026-11-06.md)
-- **F#** `perf-memory` [A record in an interpolated string costs about 20 KB and 20 microseconds, because its ToString is sprintf "%+A", and %A skips your override](entries/2026-11-06.md)
-- **TypeScript** `stdlib-ecosystem` [slice(0, 5) can cut an emoji in half, and then encodeURIComponent throws, TextEncoder writes U+FFFD, and JSON keeps the half](entries/2026-11-06.md)
+- **Rust** `perf-memory` [A Relaxed fetch_add is the same lock xadd as SeqCst on x86-64, and only a SeqCst store changes the code](entries/2026-11-09.md)
+- **C++** `frontier` [C++26 template for walks a struct's members without reflection, and its binding pack is refused outside a template](entries/2026-11-09.md)
+- **F#** `type-system` [int converts to float where the parameter type is known, so take_ratio 1 compiles and 1 |> take_ratio does not](entries/2026-11-09.md)
+- **TypeScript** `idiom` [Promise.race([]) never settles, so first replica wins over an empty list hangs and Node exits with code 0](entries/2026-11-09.md)
 
 Also in this entry:
 
-- **The functional angle** - a value that prints itself is a reflection walk in F#, generated code in Rust, a compile error in C++, and [object Object] in TypeScript
-- **The security angle** - a record's free ToString writes every field into your log, private fields and newlines included
+- **The functional angle** - walking a mixed tuple is a fold that can stop only in C++, and the other three each give up something different
+- **The security angle** - an empty candidate list turns "first one wins" into a hang, an exception or a panic, depending on the language
 
 ## Specials
 
