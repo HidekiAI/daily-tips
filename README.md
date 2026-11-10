@@ -16,29 +16,30 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**387 tips across 43 days** (2026-08-28 to 2026-11-09).
+**391 tips across 44 days** (2026-08-28 to 2026-11-10).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 99 | 17 | 26 | 33 | 13 | 10 |
-| C++ | 99 | 16 | 39 | 20 | 11 | 13 |
-| F# | 90 | 14 | 28 | 24 | 17 | 7 |
-| TypeScript | 99 | 15 | 37 | 28 | 7 | 12 |
+| Rust | 100 | 18 | 26 | 33 | 13 | 10 |
+| C++ | 100 | 16 | 39 | 20 | 12 | 13 |
+| F# | 91 | 14 | 28 | 24 | 17 | 8 |
+| TypeScript | 100 | 15 | 37 | 29 | 7 | 12 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-11-09)
+## Today's highlights (2026-11-10)
 
-- **Rust** `perf-memory` [A Relaxed fetch_add is the same lock xadd as SeqCst on x86-64, and only a SeqCst store changes the code](entries/2026-11-09.md)
-- **C++** `frontier` [C++26 template for walks a struct's members without reflection, and its binding pack is refused outside a template](entries/2026-11-09.md)
-- **F#** `type-system` [int converts to float where the parameter type is known, so take_ratio 1 compiles and 1 |> take_ratio does not](entries/2026-11-09.md)
-- **TypeScript** `idiom` [Promise.race([]) never settles, so first replica wins over an empty list hangs and Node exits with code 0](entries/2026-11-09.md)
+- **Rust** `type-system` [A closure that returns a borrow of its &str argument does not compile, and leaving out the annotation makes it compile with one lifetime for every call](entries/2026-11-10.md)
+- **C++** `perf-memory` [libstdc++ makes shared_ptr reference counts atomic only after the process's first thread, and never switches back](entries/2026-11-10.md)
+- **F#** `frontier` [Async.AwaitTask hands a failed task's error over as AggregateException, so with :? FileNotFoundException never runs, and F# 11's Async.Await is the version that does](entries/2026-11-10.md)
+- **TypeScript** `stdlib-ecosystem` [new URL(next_path, base) turns /\evil.example and /<tab>/evil.example into another host, and both pass a starts-with-one-slash check](entries/2026-11-10.md)
 
 Also in this entry:
 
-- **The functional angle** - walking a mixed tuple is a fold that can stop only in C++, and the other three each give up something different
-- **The security angle** - an empty candidate list turns "first one wins" into a hang, an exception or a panic, depending on the language
+- **The functional angle** - a lambda that returns what it was given is refused in Rust, copied in C++ and shared in TypeScript
+- **The security angle** - the code that validates a URL and the browser that follows it must use the same parser
+- **FAQ** - 3 follow-up questions
 
 ## Specials
 
