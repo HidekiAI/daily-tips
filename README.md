@@ -16,30 +16,30 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**391 tips across 44 days** (2026-08-28 to 2026-11-10).
+**403 tips across 47 days** (2026-08-28 to 2026-11-17).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 100 | 18 | 26 | 33 | 13 | 10 |
-| C++ | 100 | 16 | 39 | 20 | 12 | 13 |
-| F# | 91 | 14 | 28 | 24 | 17 | 8 |
-| TypeScript | 100 | 15 | 37 | 29 | 7 | 12 |
+| Rust | 103 | 18 | 27 | 34 | 13 | 11 |
+| C++ | 103 | 17 | 40 | 21 | 12 | 13 |
+| F# | 94 | 15 | 28 | 25 | 18 | 8 |
+| TypeScript | 103 | 15 | 38 | 29 | 8 | 13 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-11-10)
+## Today's highlights (2026-11-17)
 
-- **Rust** `type-system` [A closure that returns a borrow of its &str argument does not compile, and leaving out the annotation makes it compile with one lifetime for every call](entries/2026-11-10.md)
-- **C++** `perf-memory` [libstdc++ makes shared_ptr reference counts atomic only after the process's first thread, and never switches back](entries/2026-11-10.md)
-- **F#** `frontier` [Async.AwaitTask hands a failed task's error over as AggregateException, so with :? FileNotFoundException never runs, and F# 11's Async.Await is the version that does](entries/2026-11-10.md)
-- **TypeScript** `stdlib-ecosystem` [new URL(next_path, base) turns /\evil.example and /<tab>/evil.example into another host, and both pass a starts-with-one-slash check](entries/2026-11-10.md)
+- **Rust** `frontier` [Rust 1.100 put DropGuard in std, and dismiss is the commit: it hands the value back and frees the closure, which mem::forget leaks](entries/2026-11-17.md)
+- **C++** `type-system` [std::vector{source} copies and std::vector{source, source} nests, so a generic wrap() that adds an optional layer adds none when T is already an optional](entries/2026-11-17.md)
+- **F#** `stdlib-ecosystem` [F#'s lock takes a System.Threading.Lock and uses Monitor on it, so it never excludes C#'s lock on the same object](entries/2026-11-17.md)
+- **TypeScript** `idiom` [return promise inside try leaves the try before the promise settles, so catch never sees the rejection and finally closes the connection first](entries/2026-11-17.md)
 
 Also in this entry:
 
-- **The functional angle** - a lambda that returns what it was given is refused in Rust, copied in C++ and shared in TypeScript
-- **The security angle** - the code that validates a URL and the browser that follows it must use the same parser
-- **FAQ** - 3 follow-up questions
+- **The functional angle** - cleanup is a function of the guarded value, and only Rust's DropGuard lets the commit hand that value back
+- **The security angle** - two guards that compile, pass review and guard nothing
+- **FAQ** - 4 follow-up questions
 
 ## Specials
 
