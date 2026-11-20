@@ -16,30 +16,29 @@ Nothing here is guaranteed.
 All information is provided AS-IS: take it or leave it.
 Do your own fact-checks before you rely on any claim.
 
-**403 tips across 47 days** (2026-08-28 to 2026-11-17).
+**415 tips across 50 days** (2026-08-28 to 2026-11-20).
 
 | Language | Tips | Type system | Idioms | Stdlib gems | Perf and memory | Frontier |
 |---|--:|--:|--:|--:|--:|--:|
-| Rust | 103 | 18 | 27 | 34 | 13 | 11 |
-| C++ | 103 | 17 | 40 | 21 | 12 | 13 |
-| F# | 94 | 15 | 28 | 25 | 18 | 8 |
-| TypeScript | 103 | 15 | 38 | 29 | 8 | 13 |
+| Rust | 106 | 19 | 28 | 34 | 14 | 11 |
+| C++ | 106 | 17 | 40 | 22 | 13 | 14 |
+| F# | 97 | 15 | 29 | 25 | 19 | 9 |
+| TypeScript | 106 | 16 | 38 | 30 | 8 | 14 |
 
 `ledger.jsonl` is the machine-readable index: one JSON object per tip, with
 `date`, `language`, `category`, `title`, `tags`, `sources`, and `related`.
 
-## Today's highlights (2026-11-17)
+## Today's highlights (2026-11-20)
 
-- **Rust** `frontier` [Rust 1.100 put DropGuard in std, and dismiss is the commit: it hands the value back and frees the closure, which mem::forget leaks](entries/2026-11-17.md)
-- **C++** `type-system` [std::vector{source} copies and std::vector{source, source} nests, so a generic wrap() that adds an optional layer adds none when T is already an optional](entries/2026-11-17.md)
-- **F#** `stdlib-ecosystem` [F#'s lock takes a System.Threading.Lock and uses Monitor on it, so it never excludes C#'s lock on the same object](entries/2026-11-17.md)
-- **TypeScript** `idiom` [return promise inside try leaves the try before the promise settles, so catch never sees the rejection and finally closes the connection first](entries/2026-11-17.md)
+- **Rust** `idiom` [Path::join with an absolute name throws the base away, and starts_with(root) still passes /srv/uploads/../etc/passwd](entries/2026-11-20.md)
+- **C++** `stdlib-ecosystem` [operator<< prints a uint8_t as a character and std::format prints it as a number, so moving a log line to std::format turns A into 65](entries/2026-11-20.md)
+- **F#** `perf-memory` [Seq.cache held 47.6 MB for a million short strings, read them back no faster than regenerating them, and keeps the source open if you stop early](entries/2026-11-20.md)
+- **TypeScript** `frontier` [Node 26.12.1 made TLS refuse 0x7f.0.0.1 as a host name, which 26.12.0 matched against a *.0.0.1 certificate while the socket dialled 127.0.0.1](entries/2026-11-20.md)
 
 Also in this entry:
 
-- **The functional angle** - cleanup is a function of the guarded value, and only Rust's DropGuard lets the commit hand that value back
-- **The security angle** - two guards that compile, pass review and guard nothing
-- **FAQ** - 4 follow-up questions
+- **The functional angle** - "evaluate once" is a type in Rust and a call in F#, and only the call can hide what it keeps
+- **The security angle** - the string you checked is not the string you used
 
 ## Specials
 
